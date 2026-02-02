@@ -399,19 +399,19 @@ export default function VikitayWebsite() {
           .process-card { min-width: 280px; max-width: 280px; }
         }
         @media (max-width: 640px) {
-          .section { padding: 80px 24px; }
-          .stats { padding: 70px 24px; }
+          .section { padding: 120px 48px; position: relative; margin: 0 40px 20px; border-radius: 24px; overflow: hidden; }
+          .stats { padding: 100px 48px; margin: 0 40px 20px; border-radius: 24px; overflow: hidden; }
           .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
           .services-grid { grid-template-columns: 1fr; }
           .niches-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
           .form-row { grid-template-columns: 1fr; }
-          .hero { padding: 120px 24px; }
+          .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 48px; position: relative; overflow: hidden; margin: 0 40px 20px; border-radius: 24px; }
           .hero-btns { flex-direction: column; }
           .btn-primary, .btn-secondary { width: 100%; text-align: center; }
           .nav-inner { padding: 0 24px; }
-          .footer { padding: 50px 24px; }
+          .footer { padding: 70px 48px; border-top: 1px solid rgba(139, 92, 246, 0.1); margin: 0 40px 40px; border-radius: 24px; overflow: hidden; }
           .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-          .cta-section { padding: 80px 24px; }
+          .cta-section { text-align: center; padding: 140px 48px; margin: 0 40px 20px; border-radius: 24px; overflow: hidden; }
           .cta-form { padding: 32px; }
           .bloggers-card { padding: 32px; gap: 36px; }
           .why-us-section { padding: 80px 0; }
@@ -465,10 +465,9 @@ export default function VikitayWebsite() {
         <FloatingOrb size={350} x={15} y={25} delay={0} duration={25} color="rgba(139, 92, 246, 0.15)" />
         <FloatingOrb size={250} x={80} y={60} delay={5} duration={20} color="rgba(167, 139, 250, 0.1)" />
         <div className="hero-content">
-          <Reveal><p className="hero-label">Vikitay Group — стратегический партнёр по работе с Китаем</p></Reveal>
-          <Reveal delay={0.1}><h1 className="hero-title">Бизнес с Китаем «под ключ» —<br /><span>от идеи до регулярных поставок</span></h1></Reveal>
-          <Reveal delay={0.2}><p className="hero-subtitle">Мы строим систему для вас. От идеи и СТМ до первой поставки и системы продаж. Для тех, кто хочет продавать дороже и спать спокойнее.</p></Reveal>
-          <Reveal delay={0.3}><div className="hero-btns"><a href="#contact" className="btn-primary">Получить консультацию</a></div></Reveal>
+          <Reveal><h1 className="hero-title">Бизнес с Китаем «под ключ» —<br /><span>от идеи до регулярных поставок.</span></h1></Reveal>
+          <Reveal delay={0.1}><p className="hero-subtitle">Vikitay Group – стратегический партнер по работе с Китаем</p></Reveal>
+          <Reveal delay={0.2}><div className="hero-btns"><a href="#contact" className="btn-primary">Получить консультацию</a></div></Reveal>
         </div>
       </section>
 
