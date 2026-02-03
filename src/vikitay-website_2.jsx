@@ -73,46 +73,11 @@ const FloatingOrb = ({ size, x, y, delay, duration, color }) => (
 );
 
 // Horizontal scroll section hook
-const useHorizontalScroll = () => {
-  const containerRef = useRef(null);
-  const trackRef = useRef(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    const track = trackRef.current;
-    if (!container || !track) return;
-
-    const handleScroll = () => {
-      const rect = container.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const containerHeight = container.offsetHeight;
-      const trackWidth = track.scrollWidth - container.offsetWidth;
-
-      // Calculate how far through the section we've scrolled
-      const scrollStart = rect.top + windowHeight;
-      const scrollEnd = rect.bottom;
-      const scrollRange = scrollEnd - scrollStart + windowHeight;
-      const currentScroll = windowHeight - rect.top;
-      const progress = Math.max(0, Math.min(1, currentScroll / scrollRange));
-
-      track.style.transform = `translateX(-${progress * trackWidth}px)`;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return { containerRef, trackRef };
-};
-
 export default function VikitayWebsite() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [formData, setFormData] = useState({ name: '', phone: '', messenger: 'whatsapp', message: '' });
-
-  const processScroll = useHorizontalScroll();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -333,15 +298,14 @@ export default function VikitayWebsite() {
         .service-btn { font-size: 12px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; padding: 12px 24px; background: transparent; border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 100px; color: #c4b5fd; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; text-align: center; }
         .service-btn:hover { background: rgba(167, 139, 250, 0.1); border-color: rgba(167, 139, 250, 0.5); }
 
-        /* Process Horizontal Scroll */
-        .process-section { padding: 120px 0; min-height: 80vh; position: relative; overflow: hidden; margin: 0 40px 20px; border-radius: 24px; }
-        .process-header { max-width: 1200px; margin: 0 auto 60px; padding: 0 48px; text-align: center; }
-        .process-scroll-container { position: relative; height: 350px; overflow: hidden; }
-        .process-track { display: flex; gap: 20px; padding: 0 48px; position: absolute; left: 0; top: 0; will-change: transform; }
-        .process-card { min-width: 320px; max-width: 320px; background: linear-gradient(145deg, rgba(139, 92, 246, 0.06), rgba(167, 139, 250, 0.02)); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; padding: 36px; backdrop-filter: blur(10px); }
-        .process-num { font-size: 52px; font-weight: 200; background: linear-gradient(135deg, rgba(196, 181, 253, 0.3), rgba(167, 139, 250, 0.1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 12px; }
-        .process-title { font-size: 18px; font-weight: 400; margin-bottom: 10px; color: #c4b5fd; letter-spacing: 0.3px; }
-        .process-text { font-size: 14px; font-weight: 300; line-height: 1.7; color: rgba(255, 255, 255, 0.5); letter-spacing: 0.2px; }
+        /* Process Steps — nero-design grid style */
+        .process-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
+        .process-card { padding: 32px 28px; border: 1px solid rgba(139, 92, 246, 0.15); border-right: none; transition: all 0.3s; }
+        .process-card:last-child { border-right: 1px solid rgba(139, 92, 246, 0.15); }
+        .process-card:hover { background: rgba(139, 92, 246, 0.05); }
+        .process-num { font-size: 72px; font-weight: 300; background: linear-gradient(180deg, rgba(139, 92, 246, 0.6), rgba(139, 92, 246, 0.15)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 20px; }
+        .process-title { font-size: 16px; font-weight: 500; margin-bottom: 10px; color: #fff; }
+        .process-text { font-size: 14px; font-weight: 300; line-height: 1.6; color: rgba(255, 255, 255, 0.5); }
 
         .bloggers-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(167, 139, 250, 0.02)); border: 1px solid rgba(139, 92, 246, 0.12); border-radius: 24px; padding: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; backdrop-filter: blur(10px); }
         .bloggers-list { background: rgba(10, 10, 12, 0.6); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; padding: 36px; }
@@ -404,7 +368,8 @@ export default function VikitayWebsite() {
           .why-us-header { grid-template-columns: 1fr; gap: 24px; }
           .why-us-item { grid-template-columns: auto 1fr auto; gap: 20px; }
           .why-us-title { grid-column: 1 / -1; padding-left: 72px; margin-top: -44px; }
-          .process-card { min-width: 280px; max-width: 280px; }
+          .process-grid { grid-template-columns: repeat(3, 1fr); }
+          .process-card:nth-child(3) { border-right: 1px solid rgba(139, 92, 246, 0.15); }
         }
         @media (max-width: 640px) {
           .section { padding: 80px 24px; margin: 0 12px 12px; border-radius: 16px; }
@@ -427,9 +392,10 @@ export default function VikitayWebsite() {
           .why-us-title { padding-left: 0; margin-top: 0; }
           .why-us-num { font-size: 48px; position: absolute; right: 0; top: 24px; }
           .why-us-item { position: relative; }
-          .process-section { padding: 80px 0; margin: 0 12px 12px; border-radius: 16px; }
-          .process-header { padding: 0 24px; }
-          .process-track { padding: 0 24px; }
+          .process-grid { grid-template-columns: repeat(2, 1fr); }
+          .process-card:nth-child(2n) { border-right: 1px solid rgba(139, 92, 246, 0.15); }
+          .process-card { border-right: none; }
+          .process-num { font-size: 56px; }
         }
       `}</style>
 
@@ -550,7 +516,7 @@ export default function VikitayWebsite() {
               <div className="founder-card">
                 <div className="founder-photo">
                   <span className="founder-tag">Основатель</span>
-                  <img src="/images/founder-svetlana.png" alt="Светлана Акстинас" loading="lazy" />
+                  <img src="/images/mama.png" alt="Светлана Акстинас" loading="lazy" />
                 </div>
                 <div className="founder-info">
                   <h3 className="founder-name">Светлана Акстинас</h3>
@@ -630,23 +596,25 @@ export default function VikitayWebsite() {
       </section>
 
       {/* PROCESS SECTION */}
-      <section id="process" className="process-section bg-graphite" ref={processScroll.containerRef}>
+      <section id="process" className="section bg-graphite">
         <CherryBranch style={{ position: 'absolute', left: '2%', top: '8%', width: '160px' }} flip light />
         <FloatingOrb size={320} x={80} y={35} delay={2} duration={26} color="rgba(139, 92, 246, 0.07)" />
-        <div className="process-header">
-          <Reveal><p className="section-label">Как мы работаем</p></Reveal>
-          <Reveal delay={0.1}><h2 className="section-title">От идеи до<br /><span>первой прибыли</span></h2></Reveal>
-        </div>
-        <div className="process-scroll-container">
-          <div className="process-track" ref={processScroll.trackRef}>
-            {steps.map((s, i) => (
-              <div key={i} className="process-card">
-                <div className="process-num">{s.n}</div>
-                <h3 className="process-title">{s.title}</h3>
-                <p className="process-text">{s.text}</p>
-              </div>
-            ))}
+        <div className="section-inner">
+          <div className="section-center">
+            <Reveal><p className="section-label">Как мы работаем</p></Reveal>
+            <Reveal delay={0.1}><h2 className="section-title">От идеи до<br /><span>первой прибыли</span></h2></Reveal>
           </div>
+          <Reveal delay={0.2}>
+            <div className="process-grid">
+              {steps.map((s, i) => (
+                <div key={i} className="process-card">
+                  <div className="process-num">{s.n}</div>
+                  <h3 className="process-title">{s.title}</h3>
+                  <p className="process-text">{s.text}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
