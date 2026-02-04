@@ -452,17 +452,7 @@ export default function VikitayWebsite() {
         </div>
       </section>
 
-      {/* STATS SECTION */}
-      <section className="stats bg-purple">
-        <CherryBranch style={{ position: 'absolute', right: '2%', top: '0', width: '160px' }} />
-        <FloatingOrb size={400} x={10} y={40} delay={2} duration={28} color="rgba(196, 181, 253, 0.1)" />
-        <div className="stats-grid">
-          <Reveal delay={0}><div className="stat-item"><div className="stat-value"><Counter end={20} suffix="+" /></div><div className="stat-label">Лет опыта</div></div></Reveal>
-          <Reveal delay={0.1}><div className="stat-item"><div className="stat-value"><Counter end={500} suffix="+" /></div><div className="stat-label">Успешных проектов</div></div></Reveal>
-          <Reveal delay={0.2}><div className="stat-item"><div className="stat-value"><Counter end={15} /></div><div className="stat-label">Ниш экспертизы</div></div></Reveal>
-          <Reveal delay={0.3}><div className="stat-item"><div className="stat-value"><Counter end={98} suffix="%" /></div><div className="stat-label">Довольных клиентов</div></div></Reveal>
-        </div>
-      </section>
+
 
       {/* WHY US SECTION */}
       <section className="section bg-graphite">

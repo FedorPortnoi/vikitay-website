@@ -220,110 +220,114 @@ export default function VikitayWebsite() {
         .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(13, 13, 15, 0.35) 0%, rgba(13, 13, 15, 0.4) 50%, rgba(13, 13, 15, 0.9) 90%, rgba(13, 13, 15, 1) 100%); z-index: 1; }
         .hero-content { position: relative; z-index: 2; max-width: 850px; }
         .hero-label { font-size: 12px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #a78bfa; margin-bottom: 32px; }
-        .hero-title { font-size: clamp(36px, 5vw, 64px); font-weight: 200; line-height: 1.2; margin-bottom: 24px; letter-spacing: -1px; color: #fff; font-style: italic; }
-        .hero-title span { background: linear-gradient(135deg, #c4b5fd, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; }
-        .hero-subtitle { font-size: 18px; font-weight: 300; line-height: 1.8; color: rgba(255, 255, 255, 0.75); max-width: 600px; margin: 0 auto 48px; letter-spacing: 0.3px; }
+        .hero-title { font-size: clamp(40px, 5.5vw, 72px); font-weight: 700; line-height: 1.15; margin-bottom: 28px; letter-spacing: -1.5px; color: #fff; }
+        .hero-title span { background: linear-gradient(135deg, #c4b5fd, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        .hero-subtitle { font-size: 17px; font-weight: 300; line-height: 1.7; color: rgba(255, 255, 255, 0.65); max-width: 600px; margin: 0 auto 48px; letter-spacing: 0.2px; }
         .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; border-radius: 100px; color: #fff; cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none; display: inline-block; }
+        .btn-primary { font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 18px 44px; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; border-radius: 100px; color: #fff; cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none; display: inline-block; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px -10px rgba(139, 92, 246, 0.5); }
-        .btn-secondary { font-size: 13px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; padding: 16px 40px; background: transparent; border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 100px; color: #c4b5fd; cursor: pointer; transition: all 0.4s; text-decoration: none; display: inline-block; }
+        .btn-secondary { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 18px 44px; background: transparent; border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 100px; color: #c4b5fd; cursor: pointer; transition: all 0.4s; text-decoration: none; display: inline-block; }
         .btn-secondary:hover { background: rgba(167, 139, 250, 0.1); border-color: rgba(167, 139, 250, 0.5); }
 
-        .section { padding: 120px 48px; position: relative; margin: 0 40px 20px; border-radius: 24px; overflow: hidden; }
+        .section { padding: 140px 48px; position: relative; margin: 0 40px 20px; border-radius: 24px; overflow: hidden; }
         .section-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
         .section-center { text-align: center; max-width: 750px; margin: 0 auto; }
-        .section-label { font-size: 11px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #a78bfa; margin-bottom: 24px; }
-        .section-title { font-size: clamp(32px, 4.5vw, 48px); font-weight: 200; line-height: 1.25; margin-bottom: 20px; letter-spacing: -0.5px; color: #fff; }
-        .section-title span { background: linear-gradient(135deg, #c4b5fd, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .section-desc { font-size: 16px; font-weight: 300; line-height: 1.9; color: rgba(255, 255, 255, 0.5); letter-spacing: 0.3px; }
+        .section-label { font-size: 14px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: #a78bfa; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-label::before { content: ''; width: 10px; height: 10px; background: #a78bfa; border-radius: 50%; display: inline-block; }
+        .section-center .section-label { justify-content: center; }
+        .section-title { font-size: clamp(36px, 4.5vw, 52px); font-weight: 700; line-height: 1.2; margin-bottom: 24px; letter-spacing: -1px; color: #fff; }
+        .section-title span { background: linear-gradient(135deg, #c4b5fd, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
+        .section-desc { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(255, 255, 255, 0.55); letter-spacing: 0.2px; }
 
-        .stats { padding: 100px 48px; margin: 0 40px 20px; border-radius: 24px; overflow: hidden; }
-        .stats-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; position: relative; z-index: 2; }
-        .stat-value { font-size: 48px; font-weight: 200; margin-bottom: 8px; letter-spacing: -1px; background: linear-gradient(135deg, #e9d5ff, #c4b5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .stat-label { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: rgba(255, 255, 255, 0.45); }
+        .stats { padding: 120px 48px; margin: 0 40px 20px; border-radius: 24px; overflow: hidden; }
+        .stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: left; position: relative; z-index: 2; }
+        .stat-item { padding: 32px 28px; border-right: 1px solid rgba(139, 92, 246, 0.12); }
+        .stat-item:last-child { border-right: none; }
+        .stat-value { font-size: 64px; font-weight: 700; margin-bottom: 12px; letter-spacing: -2px; color: #fff; }
+        .stat-label { font-size: 14px; font-weight: 400; letter-spacing: 0.3px; color: rgba(255, 255, 255, 0.45); line-height: 1.5; }
 
         /* Why Us Horizontal Scroll */
         /* Why Us — Vertical List Layout (nero-design style) */
         .why-us-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 60px; }
         .why-us-header-left { }
-        .why-us-subtitle { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(255, 255, 255, 0.7); }
-        .why-us-list { border-top: 1px solid rgba(139, 92, 246, 0.2); }
-        .why-us-item { display: grid; grid-template-columns: auto 280px 1fr auto; gap: 32px; align-items: center; padding: 32px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.2); transition: background 0.3s; }
+        .why-us-subtitle { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.65); }
+        .why-us-list { border-top: 1px solid rgba(139, 92, 246, 0.15); }
+        .why-us-item { display: grid; grid-template-columns: auto 280px 1fr auto; gap: 32px; align-items: center; padding: 36px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.15); transition: background 0.3s; }
         .why-us-item:hover { background: rgba(139, 92, 246, 0.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
-        .why-us-icon { width: 52px; height: 52px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .why-us-icon span { font-size: 20px; color: #fff; }
-        .why-us-title { font-size: 16px; font-weight: 400; color: #fff; line-height: 1.5; }
-        .why-us-text { font-size: 14px; font-weight: 300; line-height: 1.7; color: rgba(255, 255, 255, 0.55); }
-        .why-us-num { font-size: 72px; font-weight: 200; background: linear-gradient(180deg, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.05)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; min-width: 90px; text-align: right; }
+        .why-us-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .why-us-icon span { font-size: 18px; color: #fff; }
+        .why-us-title { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.5; }
+        .why-us-text { font-size: 14px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); }
+        .why-us-num { font-size: 80px; font-weight: 300; background: linear-gradient(180deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.05)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; min-width: 90px; text-align: right; }
 
         /* About Section with Founders */
         .about-intro { text-align: center; max-width: 800px; margin: 0 auto 70px; }
-        .about-intro p { font-size: 18px; font-weight: 300; line-height: 1.9; color: rgba(255, 255, 255, 0.7); }
+        .about-intro p { font-size: 16px; font-weight: 400; line-height: 1.8; color: rgba(255, 255, 255, 0.6); }
         .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 50px; }
         .founder-card { background: rgba(255, 255, 255, 0.03); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .founder-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.3); }
         .founder-photo { position: relative; aspect-ratio: 4/5; overflow: hidden; }
         .founder-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .founder-card:hover .founder-photo img { transform: scale(1.03); }
-        .founder-tag { position: absolute; top: 16px; left: 16px; background: linear-gradient(135deg, #7c3aed, #9333ea); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 400; letter-spacing: 0.5px; color: #fff; }
-        .founder-info { padding: 24px; }
-        .founder-name { font-size: 20px; font-weight: 500; margin-bottom: 8px; color: #fff; }
-        .founder-desc { font-size: 14px; font-weight: 300; line-height: 1.7; color: rgba(255, 255, 255, 0.55); }
+        .founder-tag { position: absolute; top: 16px; left: 16px; background: linear-gradient(135deg, #7c3aed, #9333ea); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; color: #fff; }
+        .founder-info { padding: 28px; }
+        .founder-name { font-size: 22px; font-weight: 600; margin-bottom: 10px; color: #fff; }
+        .founder-desc { font-size: 14px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); }
         .about-outro { text-align: center; max-width: 800px; margin: 0 auto; }
-        .about-outro p { font-size: 17px; font-weight: 300; line-height: 1.9; color: rgba(255, 255, 255, 0.65); }
+        .about-outro p { font-size: 16px; font-weight: 400; line-height: 1.8; color: rgba(255, 255, 255, 0.55); }
 
         /* Niches with Images */
         .niches-intro { text-align: center; max-width: 700px; margin: 0 auto 16px; }
-        .niches-intro p { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(255, 255, 255, 0.55); }
+        .niches-intro p { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); }
         .niches-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 50px; margin-bottom: 50px; }
-        .niche-card { background: linear-gradient(145deg, rgba(139, 92, 246, 0.06), rgba(167, 139, 250, 0.02)); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; }
-        .niche-card:hover { transform: translateY(-8px); border-color: rgba(139, 92, 246, 0.3); box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.25); }
-        .niche-card:hover .niche-image img { transform: scale(1.1); }
-        .niche-image { aspect-ratio: 1/1; overflow: hidden; }
+        .niche-card { background: transparent; border: none; border-radius: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; }
+        .niche-card:hover { transform: translateY(-6px); }
+        .niche-card:hover .niche-image img { transform: scale(1.06); }
+        .niche-image { aspect-ratio: 1/1; overflow: hidden; border-radius: 12px; }
         .niche-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .niche-name { padding: 20px; text-align: center; font-size: 15px; font-weight: 400; color: rgba(255, 255, 255, 0.85); letter-spacing: 0.3px; }
+        .niche-name { padding: 16px 4px 0; text-align: left; font-size: 15px; font-weight: 400; color: rgba(255, 255, 255, 0.75); letter-spacing: 0.2px; }
         .niches-outro { text-align: center; max-width: 800px; margin: 0 auto; }
-        .niches-outro p { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(255, 255, 255, 0.5); }
+        .niches-outro p { font-size: 15px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.45); }
 
         /* Services with Images */
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 70px; }
-        .service-card { background: linear-gradient(145deg, rgba(139, 92, 246, 0.08), rgba(167, 139, 250, 0.02)); border: 1px solid rgba(139, 92, 246, 0.12); border-radius: 20px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); backdrop-filter: blur(10px); display: flex; flex-direction: column; }
-        .service-card:hover { transform: translateY(-6px); background: linear-gradient(145deg, rgba(139, 92, 246, 0.15), rgba(167, 139, 250, 0.05)); border-color: rgba(139, 92, 246, 0.25); box-shadow: 0 25px 50px -15px rgba(139, 92, 246, 0.25); }
-        .service-image { aspect-ratio: 16/10; overflow: hidden; background: rgba(139, 92, 246, 0.05); }
+        .service-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+        .service-card:hover { transform: translateY(-6px); border-color: rgba(139, 92, 246, 0.2); box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.3); }
+        .service-image { aspect-ratio: 16/10; overflow: hidden; }
         .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .service-card:hover .service-image img { transform: scale(1.05); }
         .service-content { padding: 28px; display: flex; flex-direction: column; flex: 1; }
-        .service-title { font-size: 18px; font-weight: 400; margin-bottom: 12px; letter-spacing: 0.3px; color: #fff; }
-        .service-desc { font-size: 14px; font-weight: 300; line-height: 1.7; color: rgba(255, 255, 255, 0.5); letter-spacing: 0.2px; flex: 1; margin-bottom: 20px; }
-        .service-btn { font-size: 12px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; padding: 12px 24px; background: transparent; border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 100px; color: #c4b5fd; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; text-align: center; }
+        .service-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.2px; color: #fff; }
+        .service-desc { font-size: 14px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.45); letter-spacing: 0.2px; flex: 1; margin-bottom: 20px; }
+        .service-btn { font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 12px 24px; background: transparent; border: 1px solid rgba(167, 139, 250, 0.25); border-radius: 100px; color: #c4b5fd; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; text-align: center; }
         .service-btn:hover { background: rgba(167, 139, 250, 0.1); border-color: rgba(167, 139, 250, 0.5); }
 
         /* Process Steps — nero-design grid style */
         .process-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
-        .process-card { padding: 32px 28px; border: 1px solid rgba(139, 92, 246, 0.15); border-right: none; transition: all 0.3s; }
-        .process-card:last-child { border-right: 1px solid rgba(139, 92, 246, 0.15); }
-        .process-card:hover { background: rgba(139, 92, 246, 0.05); }
-        .process-num { font-size: 72px; font-weight: 300; background: linear-gradient(180deg, rgba(139, 92, 246, 0.6), rgba(139, 92, 246, 0.15)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 20px; }
-        .process-title { font-size: 16px; font-weight: 500; margin-bottom: 10px; color: #fff; }
-        .process-text { font-size: 14px; font-weight: 300; line-height: 1.6; color: rgba(255, 255, 255, 0.5); }
+        .process-card { padding: 36px 28px; border: 1px solid rgba(139, 92, 246, 0.12); border-right: none; transition: all 0.3s; }
+        .process-card:last-child { border-right: 1px solid rgba(139, 92, 246, 0.12); }
+        .process-card:hover { background: rgba(139, 92, 246, 0.04); }
+        .process-num { font-size: 80px; font-weight: 300; background: linear-gradient(180deg, rgba(139, 92, 246, 0.5), rgba(139, 92, 246, 0.1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 24px; }
+        .process-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: #fff; }
+        .process-text { font-size: 14px; font-weight: 400; line-height: 1.6; color: rgba(255, 255, 255, 0.45); }
 
-        .bloggers-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(167, 139, 250, 0.02)); border: 1px solid rgba(139, 92, 246, 0.12); border-radius: 24px; padding: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; backdrop-filter: blur(10px); }
-        .bloggers-list { background: rgba(10, 10, 12, 0.6); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; padding: 36px; }
-        .bloggers-list-title { font-size: 16px; font-weight: 400; margin-bottom: 28px; color: #c4b5fd; letter-spacing: 0.3px; }
-        .bloggers-list-item { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; font-size: 15px; font-weight: 300; color: rgba(255, 255, 255, 0.65); letter-spacing: 0.2px; }
+        .bloggers-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 20px; padding: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+        .bloggers-list { background: rgba(10, 10, 12, 0.6); border: 1px solid rgba(139, 92, 246, 0.08); border-radius: 16px; padding: 36px; }
+        .bloggers-list-title { font-size: 16px; font-weight: 600; margin-bottom: 28px; color: #c4b5fd; letter-spacing: 0.2px; }
+        .bloggers-list-item { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; font-size: 15px; font-weight: 400; color: rgba(255, 255, 255, 0.55); letter-spacing: 0.2px; }
         .bloggers-list-item:last-child { margin-bottom: 0; }
         .bloggers-list-dot { width: 6px; height: 6px; background: #a78bfa; border-radius: 50%; }
 
         /* Cases Section */
         .cases-intro { text-align: center; max-width: 800px; margin: 0 auto 50px; }
-        .cases-intro p { font-size: 16px; font-weight: 300; line-height: 1.8; color: rgba(255, 255, 255, 0.55); margin-bottom: 16px; }
+        .cases-intro p { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); margin-bottom: 16px; }
         .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .case-card { background: linear-gradient(145deg, rgba(139, 92, 246, 0.06), rgba(167, 139, 250, 0.02)); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .case-title { font-size: 20px; font-weight: 300; color: rgba(255, 255, 255, 0.4); margin-bottom: 8px; }
-        .case-desc { font-size: 14px; font-weight: 300; color: rgba(255, 255, 255, 0.3); }
+        .case-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.08); border-radius: 16px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .case-title { font-size: 20px; font-weight: 500; color: rgba(255, 255, 255, 0.4); margin-bottom: 8px; }
+        .case-desc { font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.3); }
 
         .cta-section { text-align: center; padding: 140px 48px; margin: 0 40px 20px; border-radius: 24px; overflow: hidden; }
-        .cta-form { max-width: 580px; margin: 56px auto 0; background: linear-gradient(145deg, rgba(139, 92, 246, 0.1), rgba(167, 139, 250, 0.03)); border: 1px solid rgba(139, 92, 246, 0.15); border-radius: 20px; padding: 44px; text-align: left; backdrop-filter: blur(10px); }
+        .cta-form { max-width: 580px; margin: 56px auto 0; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; padding: 44px; text-align: left; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
         .form-group { margin-bottom: 20px; }
         .form-label { display: block; font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.4); margin-bottom: 10px; }
@@ -337,13 +341,13 @@ export default function VikitayWebsite() {
         .form-submit { width: 100%; padding: 16px; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; border-radius: 10px; color: #fff; font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.4s; margin-top: 8px; }
         .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -8px rgba(139, 92, 246, 0.5); }
 
-        .footer { padding: 70px 48px; border-top: 1px solid rgba(139, 92, 246, 0.1); margin: 0 40px 40px; border-radius: 24px; overflow: hidden; }
+        .footer { padding: 80px 48px; border-top: 1px solid rgba(139, 92, 246, 0.08); margin: 0 40px 40px; border-radius: 24px; overflow: hidden; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; position: relative; z-index: 2; }
-        .footer-about p { font-size: 14px; font-weight: 300; line-height: 1.8; color: rgba(255, 255, 255, 0.4); margin-top: 20px; max-width: 300px; letter-spacing: 0.2px; }
-        .footer-title { font-size: 11px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: #a78bfa; margin-bottom: 24px; }
+        .footer-about p { font-size: 14px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.4); margin-top: 20px; max-width: 300px; letter-spacing: 0.2px; }
+        .footer-title { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #a78bfa; margin-bottom: 24px; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 12px; }
-        .footer-links a { font-size: 14px; font-weight: 300; color: rgba(255, 255, 255, 0.5); text-decoration: none; transition: color 0.3s; letter-spacing: 0.2px; display: flex; align-items: center; gap: 8px; }
+        .footer-links a { font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.45); text-decoration: none; transition: color 0.3s; letter-spacing: 0.2px; display: flex; align-items: center; gap: 8px; }
         .footer-links a:hover { color: #c4b5fd; }
         .footer-bottom { max-width: 1200px; margin: 50px auto 0; padding-top: 30px; border-top: 1px solid rgba(139, 92, 246, 0.08); display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 300; color: rgba(255, 255, 255, 0.35); letter-spacing: 0.3px; position: relative; z-index: 2; }
         .footer-legal { display: flex; gap: 28px; }
@@ -374,7 +378,9 @@ export default function VikitayWebsite() {
         @media (max-width: 640px) {
           .section { padding: 80px 24px; margin: 0 12px 12px; border-radius: 16px; }
           .stats { padding: 70px 24px; margin: 0 12px 12px; border-radius: 16px; }
-          .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+          .stats-grid { grid-template-columns: repeat(2, 1fr); }
+          .stat-item:nth-child(2) { border-right: none; }
+          .stat-value { font-size: 48px; }
           .services-grid { grid-template-columns: 1fr; }
           .niches-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
           .form-row { grid-template-columns: 1fr; }
@@ -451,10 +457,10 @@ export default function VikitayWebsite() {
         <CherryBranch style={{ position: 'absolute', right: '2%', top: '0', width: '160px' }} />
         <FloatingOrb size={400} x={10} y={40} delay={2} duration={28} color="rgba(196, 181, 253, 0.1)" />
         <div className="stats-grid">
-          <Reveal delay={0}><div className="stat-value"><Counter end={20} suffix="+" /></div><div className="stat-label">Лет опыта</div></Reveal>
-          <Reveal delay={0.1}><div className="stat-value"><Counter end={500} suffix="+" /></div><div className="stat-label">Успешных проектов</div></Reveal>
-          <Reveal delay={0.2}><div className="stat-value"><Counter end={15} /></div><div className="stat-label">Ниш экспертизы</div></Reveal>
-          <Reveal delay={0.3}><div className="stat-value"><Counter end={98} suffix="%" /></div><div className="stat-label">Довольных клиентов</div></Reveal>
+          <Reveal delay={0}><div className="stat-item"><div className="stat-value"><Counter end={20} suffix="+" /></div><div className="stat-label">Лет опыта</div></div></Reveal>
+          <Reveal delay={0.1}><div className="stat-item"><div className="stat-value"><Counter end={500} suffix="+" /></div><div className="stat-label">Успешных проектов</div></div></Reveal>
+          <Reveal delay={0.2}><div className="stat-item"><div className="stat-value"><Counter end={15} /></div><div className="stat-label">Ниш экспертизы</div></div></Reveal>
+          <Reveal delay={0.3}><div className="stat-item"><div className="stat-value"><Counter end={98} suffix="%" /></div><div className="stat-label">Довольных клиентов</div></div></Reveal>
         </div>
       </section>
 
