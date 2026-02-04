@@ -245,18 +245,19 @@ export default function VikitayWebsite() {
         .stat-value { font-size: 64px; font-weight: 700; margin-bottom: 12px; letter-spacing: -2px; color: #fff; }
         .stat-label { font-size: 14px; font-weight: 400; letter-spacing: 0.3px; color: rgba(255, 255, 255, 0.45); line-height: 1.5; }
 
+        /* Why Us Horizontal Scroll */
         /* Why Us — Vertical List Layout (nero-design style) */
-        .why-us-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 80px; }
+        .why-us-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 60px; }
         .why-us-header-left { }
-        .why-us-subtitle { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.55); }
-        .why-us-list { border-top: 1px solid rgba(139, 92, 246, 0.12); }
-        .why-us-item { display: grid; grid-template-columns: 48px 1fr 1.4fr 80px; gap: 28px; align-items: center; padding: 44px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.12); transition: all 0.3s ease; }
-        .why-us-item:hover { background: rgba(139, 92, 246, 0.03); margin: 0 -24px; padding-left: 24px; padding-right: 24px; border-radius: 12px; }
-        .why-us-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .why-us-subtitle { font-size: 18px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.7); }
+        .why-us-list { border-top: 1px solid rgba(139, 92, 246, 0.15); }
+        .why-us-item { display: grid; grid-template-columns: 48px 1fr 1.4fr 60px; gap: 28px; align-items: start; padding: 44px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.12); transition: all 0.3s; }
+        .why-us-item:hover { background: rgba(139, 92, 246, 0.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+        .why-us-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 4px; }
         .why-us-icon span { font-size: 18px; color: #fff; }
-        .why-us-title { font-size: 16px; font-weight: 600; color: #fff; line-height: 1.45; }
-        .why-us-text { font-size: 15px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); }
-        .why-us-num { font-size: 80px; font-weight: 200; background: linear-gradient(180deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.05)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; text-align: right; }
+        .why-us-title { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.5; }
+        .why-us-text { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.65); }
+        .why-us-num { font-size: 64px; font-weight: 300; background: linear-gradient(180deg, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.08)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; text-align: right; }
 
         /* About Section with Founders */
         .about-intro { text-align: center; max-width: 800px; margin: 0 auto 70px; }
@@ -370,9 +371,9 @@ export default function VikitayWebsite() {
           .footer-inner { grid-template-columns: 1fr; gap: 36px; }
           .why-us-header { grid-template-columns: 1fr; gap: 24px; }
           .why-us-item { grid-template-columns: 48px 1fr auto; gap: 20px; padding: 36px 0; }
-          .why-us-title { grid-column: 2; grid-row: 1; }
-          .why-us-text { grid-column: 2; grid-row: 2; }
-          .why-us-num { grid-column: 3; grid-row: 1 / 3; align-self: center; font-size: 64px; }
+          .why-us-title { grid-column: 2 / 3; }
+          .why-us-text { grid-column: 2 / 3; }
+          .why-us-num { font-size: 52px; }
           .process-grid { grid-template-columns: repeat(3, 1fr); }
           .process-card:nth-child(3) { border-right: 1px solid rgba(139, 92, 246, 0.15); }
         }
@@ -394,11 +395,11 @@ export default function VikitayWebsite() {
           .cta-section { padding: 80px 24px; margin: 0 12px 12px; border-radius: 16px; }
           .cta-form { padding: 32px; }
           .bloggers-card { padding: 32px; gap: 36px; }
-          .why-us-item { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 28px 0; position: relative; }
+          .why-us-item { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; position: relative; }
           .why-us-icon { display: none; }
-          .why-us-title { grid-column: 1; grid-row: auto; padding-right: 70px; }
-          .why-us-text { grid-column: 1; grid-row: auto; padding-right: 70px; }
-          .why-us-num { position: absolute; right: 0; top: 28px; font-size: 48px; grid-column: auto; grid-row: auto; }
+          .why-us-title { padding-right: 70px; }
+          .why-us-text { padding-right: 70px; }
+          .why-us-num { font-size: 44px; position: absolute; right: 0; top: 28px; }
           .process-grid { grid-template-columns: repeat(2, 1fr); }
           .process-card:nth-child(2n) { border-right: 1px solid rgba(139, 92, 246, 0.15); }
           .process-card { border-right: none; }
