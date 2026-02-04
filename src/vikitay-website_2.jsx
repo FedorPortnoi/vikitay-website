@@ -205,9 +205,8 @@ export default function VikitayWebsite() {
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 0; transition: all 0.4s ease; }
         .nav.scrolled { background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(20px); padding: 16px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-icon { width: 42px; height: 42px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 400; font-size: 18px; color: #fff; }
-        .logo-text { font-size: 20px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; background: linear-gradient(135deg, #c4b5fd, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo { display: flex; align-items: center; gap: 0; text-decoration: none; }
+        .logo img { height: 64px; width: auto; display: block; }
         .nav-links { display: flex; align-items: center; gap: 44px; }
         .nav-link { font-size: 13px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); text-decoration: none; transition: all 0.3s; }
         .nav-link:hover { color: #c4b5fd; }
@@ -221,8 +220,8 @@ export default function VikitayWebsite() {
         .hero-content { position: relative; z-index: 2; max-width: 850px; }
         .hero-label { font-size: 12px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #a78bfa; margin-bottom: 32px; }
         .hero-title { font-size: clamp(40px, 5.5vw, 72px); font-weight: 700; line-height: 1.15; margin-bottom: 28px; letter-spacing: -1.5px; color: #fff; }
-        .hero-title span { background: linear-gradient(135deg, #c4b5fd, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
-        .hero-subtitle { font-size: 17px; font-weight: 300; line-height: 1.7; color: rgba(255, 255, 255, 0.65); max-width: 600px; margin: 0 auto 48px; letter-spacing: 0.2px; }
+        .hero-title span { color: #fff; -webkit-text-fill-color: #fff; background: none; }
+        .hero-subtitle { font-size: 17px; font-weight: 300; line-height: 1.7; color: #fff; max-width: 600px; margin: 0 auto 48px; letter-spacing: 0.2px; }
         .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .btn-primary { font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 18px 44px; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; border-radius: 100px; color: #fff; cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none; display: inline-block; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px -10px rgba(139, 92, 246, 0.5); }
@@ -291,7 +290,8 @@ export default function VikitayWebsite() {
 
         /* Services with Images */
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 70px; }
-        .service-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+        .services-grid > div { height: 100%; }
+        .service-card { height: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
         .service-card:hover { transform: translateY(-6px); border-color: rgba(139, 92, 246, 0.2); box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.3); }
         .service-image { aspect-ratio: 16/10; overflow: hidden; }
         .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -410,8 +410,7 @@ export default function VikitayWebsite() {
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-inner">
           <Link to="/" className="logo">
-            <div className="logo-icon">V</div>
-            <span className="logo-text">VIKITAY</span>
+            <img src="/images/final2-1.png" alt="VIKITAY" />
           </Link>
           <div className="nav-links">
             <a href="#about" className="nav-link">О нас</a>
@@ -452,17 +451,7 @@ export default function VikitayWebsite() {
         </div>
       </section>
 
-      {/* STATS SECTION */}
-      <section className="stats bg-purple">
-        <CherryBranch style={{ position: 'absolute', right: '2%', top: '0', width: '160px' }} />
-        <FloatingOrb size={400} x={10} y={40} delay={2} duration={28} color="rgba(196, 181, 253, 0.1)" />
-        <div className="stats-grid">
-          <Reveal delay={0}><div className="stat-item"><div className="stat-value"><Counter end={20} suffix="+" /></div><div className="stat-label">Лет опыта</div></div></Reveal>
-          <Reveal delay={0.1}><div className="stat-item"><div className="stat-value"><Counter end={500} suffix="+" /></div><div className="stat-label">Успешных проектов</div></div></Reveal>
-          <Reveal delay={0.2}><div className="stat-item"><div className="stat-value"><Counter end={15} /></div><div className="stat-label">Ниш экспертизы</div></div></Reveal>
-          <Reveal delay={0.3}><div className="stat-item"><div className="stat-value"><Counter end={98} suffix="%" /></div><div className="stat-label">Довольных клиентов</div></div></Reveal>
-        </div>
-      </section>
+
 
       {/* WHY US SECTION */}
       <section className="section bg-graphite">
@@ -539,6 +528,34 @@ export default function VikitayWebsite() {
         </div>
       </section>
 
+      {/* SERVICES SECTION */}
+      <section id="services" className="section bg-purple">
+        <CherryBranch style={{ position: 'absolute', right: '3%', bottom: '10%', width: '170px' }} />
+        <FloatingOrb size={350} x={20} y={50} delay={3} duration={24} color="rgba(196, 181, 253, 0.08)" />
+        <div className="section-inner">
+          <div className="section-center">
+            <Reveal><p className="section-label">Услуги</p></Reveal>
+            <Reveal delay={0.1}><h2 className="section-title">Не разовые услуги.<br />Системное партнёрство.</h2></Reveal>
+          </div>
+          <div className="services-grid">
+            {services.map((s, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src={s.image} alt={s.title} loading="lazy" />
+                  </div>
+                  <div className="service-content">
+                    <h3 className="service-title">{s.title}</h3>
+                    <p className="service-desc">{s.desc}</p>
+                    <Link to={s.link} className="service-btn">Подробнее</Link>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* NICHES SECTION */}
       <section className="section bg-graphite">
         <CherryBranch style={{ position: 'absolute', right: '5%', top: '5%', width: '150px' }} light />
@@ -570,34 +587,6 @@ export default function VikitayWebsite() {
               <p>Мы можем проработать всё — от фурнитуры и мелких деталей до оборудования и целых домов, но сознательно не работаем с FMCG-сегментом и «массовым ширпотребом». Наша зона ответственности — товары и проекты, где ценят вкус, долговечность и сильный продукт, а не просто минимальную цену.</p>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* SERVICES SECTION */}
-      <section id="services" className="section bg-purple">
-        <CherryBranch style={{ position: 'absolute', right: '3%', bottom: '10%', width: '170px' }} />
-        <FloatingOrb size={350} x={20} y={50} delay={3} duration={24} color="rgba(196, 181, 253, 0.08)" />
-        <div className="section-inner">
-          <div className="section-center">
-            <Reveal><p className="section-label">Услуги</p></Reveal>
-            <Reveal delay={0.1}><h2 className="section-title">Не разовые услуги.<br /><span>Системное партнёрство.</span></h2></Reveal>
-          </div>
-          <div className="services-grid">
-            {services.map((s, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div className="service-card">
-                  <div className="service-image">
-                    <img src={s.image} alt={s.title} loading="lazy" />
-                  </div>
-                  <div className="service-content">
-                    <h3 className="service-title">{s.title}</h3>
-                    <p className="service-desc">{s.desc}</p>
-                    <Link to={s.link} className="service-btn">Подробнее</Link>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -755,8 +744,7 @@ export default function VikitayWebsite() {
         <div className="footer-inner">
           <div className="footer-about">
             <Link to="/" className="logo">
-              <div className="logo-icon">V</div>
-              <span className="logo-text">VIKITAY GROUP</span>
+              <img src="/images/final2-1.png" alt="VIKITAY GROUP" style={{ height: '54px', width: 'auto' }} />
             </Link>
             <p>Стратегический партнёр по бизнесу с Китаем. Мы управляем сложным, чтобы вы спокойно росли.</p>
           </div>

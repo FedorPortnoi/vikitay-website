@@ -205,9 +205,8 @@ export default function VikitayWebsite() {
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 0; transition: all 0.4s ease; }
         .nav.scrolled { background: rgba(10, 10, 12, 0.95); backdrop-filter: blur(20px); padding: 16px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.1); }
         .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-icon { width: 42px; height: 42px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 400; font-size: 18px; color: #fff; }
-        .logo-text { font-size: 20px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; background: linear-gradient(135deg, #c4b5fd, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo { display: flex; align-items: center; gap: 0; text-decoration: none; }
+        .logo img { height: 64px; width: auto; display: block; }
         .nav-links { display: flex; align-items: center; gap: 44px; }
         .nav-link { font-size: 13px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); text-decoration: none; transition: all 0.3s; }
         .nav-link:hover { color: #c4b5fd; }
@@ -221,8 +220,8 @@ export default function VikitayWebsite() {
         .hero-content { position: relative; z-index: 2; max-width: 850px; }
         .hero-label { font-size: 12px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #a78bfa; margin-bottom: 32px; }
         .hero-title { font-size: clamp(40px, 5.5vw, 72px); font-weight: 700; line-height: 1.15; margin-bottom: 28px; letter-spacing: -1.5px; color: #fff; }
-        .hero-title span { background: linear-gradient(135deg, #c4b5fd, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; }
-        .hero-subtitle { font-size: 17px; font-weight: 300; line-height: 1.7; color: rgba(255, 255, 255, 0.65); max-width: 600px; margin: 0 auto 48px; letter-spacing: 0.2px; }
+        .hero-title span { color: #fff; -webkit-text-fill-color: #fff; background: none; }
+        .hero-subtitle { font-size: 17px; font-weight: 300; line-height: 1.7; color: #fff; max-width: 600px; margin: 0 auto 48px; letter-spacing: 0.2px; }
         .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .btn-primary { font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; padding: 18px 44px; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; border-radius: 100px; color: #fff; cursor: pointer; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none; display: inline-block; }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px -10px rgba(139, 92, 246, 0.5); }
@@ -246,19 +245,18 @@ export default function VikitayWebsite() {
         .stat-value { font-size: 64px; font-weight: 700; margin-bottom: 12px; letter-spacing: -2px; color: #fff; }
         .stat-label { font-size: 14px; font-weight: 400; letter-spacing: 0.3px; color: rgba(255, 255, 255, 0.45); line-height: 1.5; }
 
-        /* Why Us Horizontal Scroll */
         /* Why Us — Vertical List Layout (nero-design style) */
-        .why-us-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 60px; }
+        .why-us-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 80px; }
         .why-us-header-left { }
-        .why-us-subtitle { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.65); }
-        .why-us-list { border-top: 1px solid rgba(139, 92, 246, 0.15); }
-        .why-us-item { display: grid; grid-template-columns: auto 280px 1fr auto; gap: 32px; align-items: center; padding: 36px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.15); transition: background 0.3s; }
-        .why-us-item:hover { background: rgba(139, 92, 246, 0.03); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+        .why-us-subtitle { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.55); }
+        .why-us-list { border-top: 1px solid rgba(139, 92, 246, 0.12); }
+        .why-us-item { display: grid; grid-template-columns: 48px 1fr 1.4fr 80px; gap: 28px; align-items: center; padding: 44px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.12); transition: all 0.3s ease; }
+        .why-us-item:hover { background: rgba(139, 92, 246, 0.03); margin: 0 -24px; padding-left: 24px; padding-right: 24px; border-radius: 12px; }
         .why-us-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #7c3aed, #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .why-us-icon span { font-size: 18px; color: #fff; }
-        .why-us-title { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.5; }
-        .why-us-text { font-size: 14px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); }
-        .why-us-num { font-size: 80px; font-weight: 300; background: linear-gradient(180deg, rgba(139, 92, 246, 0.25), rgba(139, 92, 246, 0.05)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; min-width: 90px; text-align: right; }
+        .why-us-title { font-size: 16px; font-weight: 600; color: #fff; line-height: 1.45; }
+        .why-us-text { font-size: 15px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); }
+        .why-us-num { font-size: 80px; font-weight: 200; background: linear-gradient(180deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.05)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; text-align: right; }
 
         /* About Section with Founders */
         .about-intro { text-align: center; max-width: 800px; margin: 0 auto 70px; }
@@ -291,7 +289,8 @@ export default function VikitayWebsite() {
 
         /* Services with Images */
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 70px; }
-        .service-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
+        .services-grid > div { height: 100%; }
+        .service-card { height: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
         .service-card:hover { transform: translateY(-6px); border-color: rgba(139, 92, 246, 0.2); box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.3); }
         .service-image { aspect-ratio: 16/10; overflow: hidden; }
         .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -370,8 +369,10 @@ export default function VikitayWebsite() {
           .bloggers-card { grid-template-columns: 1fr; padding: 44px; }
           .footer-inner { grid-template-columns: 1fr; gap: 36px; }
           .why-us-header { grid-template-columns: 1fr; gap: 24px; }
-          .why-us-item { grid-template-columns: auto 1fr auto; gap: 20px; }
-          .why-us-title { grid-column: 1 / -1; padding-left: 72px; margin-top: -44px; }
+          .why-us-item { grid-template-columns: 48px 1fr auto; gap: 20px; padding: 36px 0; }
+          .why-us-title { grid-column: 2; grid-row: 1; }
+          .why-us-text { grid-column: 2; grid-row: 2; }
+          .why-us-num { grid-column: 3; grid-row: 1 / 3; align-self: center; font-size: 64px; }
           .process-grid { grid-template-columns: repeat(3, 1fr); }
           .process-card:nth-child(3) { border-right: 1px solid rgba(139, 92, 246, 0.15); }
         }
@@ -393,11 +394,11 @@ export default function VikitayWebsite() {
           .cta-section { padding: 80px 24px; margin: 0 12px 12px; border-radius: 16px; }
           .cta-form { padding: 32px; }
           .bloggers-card { padding: 32px; gap: 36px; }
-          .why-us-item { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
+          .why-us-item { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 28px 0; position: relative; }
           .why-us-icon { display: none; }
-          .why-us-title { padding-left: 0; margin-top: 0; }
-          .why-us-num { font-size: 48px; position: absolute; right: 0; top: 24px; }
-          .why-us-item { position: relative; }
+          .why-us-title { grid-column: 1; grid-row: auto; padding-right: 70px; }
+          .why-us-text { grid-column: 1; grid-row: auto; padding-right: 70px; }
+          .why-us-num { position: absolute; right: 0; top: 28px; font-size: 48px; grid-column: auto; grid-row: auto; }
           .process-grid { grid-template-columns: repeat(2, 1fr); }
           .process-card:nth-child(2n) { border-right: 1px solid rgba(139, 92, 246, 0.15); }
           .process-card { border-right: none; }
@@ -410,8 +411,7 @@ export default function VikitayWebsite() {
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-inner">
           <Link to="/" className="logo">
-            <div className="logo-icon">V</div>
-            <span className="logo-text">VIKITAY</span>
+            <img src="/images/final2-1.png" alt="VIKITAY" />
           </Link>
           <div className="nav-links">
             <a href="#about" className="nav-link">О нас</a>
@@ -529,6 +529,34 @@ export default function VikitayWebsite() {
         </div>
       </section>
 
+      {/* SERVICES SECTION */}
+      <section id="services" className="section bg-purple">
+        <CherryBranch style={{ position: 'absolute', right: '3%', bottom: '10%', width: '170px' }} />
+        <FloatingOrb size={350} x={20} y={50} delay={3} duration={24} color="rgba(196, 181, 253, 0.08)" />
+        <div className="section-inner">
+          <div className="section-center">
+            <Reveal><p className="section-label">Услуги</p></Reveal>
+            <Reveal delay={0.1}><h2 className="section-title">Не разовые услуги.<br />Системное партнёрство.</h2></Reveal>
+          </div>
+          <div className="services-grid">
+            {services.map((s, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src={s.image} alt={s.title} loading="lazy" />
+                  </div>
+                  <div className="service-content">
+                    <h3 className="service-title">{s.title}</h3>
+                    <p className="service-desc">{s.desc}</p>
+                    <Link to={s.link} className="service-btn">Подробнее</Link>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* NICHES SECTION */}
       <section className="section bg-graphite">
         <CherryBranch style={{ position: 'absolute', right: '5%', top: '5%', width: '150px' }} light />
@@ -560,34 +588,6 @@ export default function VikitayWebsite() {
               <p>Мы можем проработать всё — от фурнитуры и мелких деталей до оборудования и целых домов, но сознательно не работаем с FMCG-сегментом и «массовым ширпотребом». Наша зона ответственности — товары и проекты, где ценят вкус, долговечность и сильный продукт, а не просто минимальную цену.</p>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* SERVICES SECTION */}
-      <section id="services" className="section bg-purple">
-        <CherryBranch style={{ position: 'absolute', right: '3%', bottom: '10%', width: '170px' }} />
-        <FloatingOrb size={350} x={20} y={50} delay={3} duration={24} color="rgba(196, 181, 253, 0.08)" />
-        <div className="section-inner">
-          <div className="section-center">
-            <Reveal><p className="section-label">Услуги</p></Reveal>
-            <Reveal delay={0.1}><h2 className="section-title">Не разовые услуги.<br /><span>Системное партнёрство.</span></h2></Reveal>
-          </div>
-          <div className="services-grid">
-            {services.map((s, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div className="service-card">
-                  <div className="service-image">
-                    <img src={s.image} alt={s.title} loading="lazy" />
-                  </div>
-                  <div className="service-content">
-                    <h3 className="service-title">{s.title}</h3>
-                    <p className="service-desc">{s.desc}</p>
-                    <Link to={s.link} className="service-btn">Подробнее</Link>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -745,8 +745,7 @@ export default function VikitayWebsite() {
         <div className="footer-inner">
           <div className="footer-about">
             <Link to="/" className="logo">
-              <div className="logo-icon">V</div>
-              <span className="logo-text">VIKITAY GROUP</span>
+              <img src="/images/final2-1.png" alt="VIKITAY GROUP" style={{ height: '54px', width: 'auto' }} />
             </Link>
             <p>Стратегический партнёр по бизнесу с Китаем. Мы управляем сложным, чтобы вы спокойно росли.</p>
           </div>
