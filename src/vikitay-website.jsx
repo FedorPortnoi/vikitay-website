@@ -90,9 +90,16 @@ export default function VikitayWebsite() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
-    setFormData({ name: '', phone: '', messenger: 'whatsapp', message: '' });
+    window.emailjs.send('service_4jkn3fn', 'template_neucvsp', {
+      name: formData.name,
+      phone: formData.phone,
+      messenger: formData.messenger,
+      message: formData.message
+    }, 'hqNSYN-AUE3HIaBI6').then(() => {
+      alert('Заявка отправлена!');
+      setFormData({ name: '', phone: '', messenger: 'whatsapp', message: '' });
+      setConsent(false);
+    }).catch(() => alert('Ошибка, попробуйте ещё раз'));
   };
 
   const services = [
