@@ -78,6 +78,7 @@ export default function VikitayWebsite() {
   const [scrolled, setScrolled] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [formData, setFormData] = useState({ name: '', phone: '', messenger: 'whatsapp', message: '' });
+  const [consent, setConsent] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -85,7 +86,7 @@ export default function VikitayWebsite() {
     window.addEventListener('scroll', onScroll);
     window.addEventListener('mousemove', onMouseMove);
     return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('mousemove', onMouseMove); };
-  }, []);
+  }, []);   
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -210,6 +211,14 @@ export default function VikitayWebsite() {
         .nav-links { display: flex; align-items: center; gap: 44px; }
         .nav-link { font-size: 13px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); text-decoration: none; transition: all 0.3s; }
         .nav-link:hover { color: #c4b5fd; }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-trigger { font-size: 13px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); cursor: pointer; transition: all 0.3s; background: none; border: none; font-family: 'Jost', sans-serif; display: flex; align-items: center; gap: 6px; }
+        .nav-dropdown-trigger:hover { color: #c4b5fd; }
+        .nav-dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 280px; background: rgba(13, 13, 15, 0.97); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.15); border-radius: 12px; padding: 12px 0; margin-top: 16px; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; z-index: 200; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+        .nav-dropdown-menu::before { content: ''; position: absolute; top: -16px; left: 0; right: 0; height: 16px; }
+        .nav-dropdown-menu a { display: block; padding: 10px 24px; font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.6); text-decoration: none; transition: all 0.2s; letter-spacing: 0.3px; }
+        .nav-dropdown-menu a:hover { color: #c4b5fd; background: rgba(139, 92, 246, 0.08); }
         .nav-btn { font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 12px 28px; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; border-radius: 100px; color: #fff; cursor: pointer; transition: all 0.3s; text-decoration: none; }
         .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -8px rgba(139, 92, 246, 0.5); }
 
@@ -284,7 +293,7 @@ export default function VikitayWebsite() {
         .niche-card:hover .niche-image img { transform: scale(1.06); }
         .niche-image { aspect-ratio: 1/1; overflow: hidden; border-radius: 12px; }
         .niche-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .niche-name { padding: 16px 4px 0; text-align: left; font-size: 15px; font-weight: 400; color: rgba(255, 255, 255, 0.75); letter-spacing: 0.2px; }
+        .niche-name { padding: 16px 4px 0; text-align: left; font-size: 17px; font-weight: 600; color: #fff; letter-spacing: 0.2px; }
         .niches-outro { text-align: center; max-width: 800px; margin: 0 auto; }
         .niches-outro p { font-size: 15px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.45); }
 
@@ -302,14 +311,14 @@ export default function VikitayWebsite() {
         .service-btn { font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 12px 24px; background: transparent; border: 1px solid rgba(167, 139, 250, 0.25); border-radius: 100px; color: #c4b5fd; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; text-align: center; }
         .service-btn:hover { background: rgba(167, 139, 250, 0.1); border-color: rgba(167, 139, 250, 0.5); }
 
-        /* Process Steps — nero-design grid style */
+        /* Process Steps */
         .process-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
-        .process-card { padding: 36px 28px; border: 1px solid rgba(139, 92, 246, 0.12); border-right: none; transition: all 0.3s; }
+        .process-card { padding: 48px 32px; border: 1px solid rgba(139, 92, 246, 0.12); border-right: none; transition: all 0.3s; }
         .process-card:last-child { border-right: 1px solid rgba(139, 92, 246, 0.12); }
         .process-card:hover { background: rgba(139, 92, 246, 0.04); }
-        .process-num { font-size: 80px; font-weight: 300; background: linear-gradient(180deg, rgba(139, 92, 246, 0.5), rgba(139, 92, 246, 0.1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 24px; }
-        .process-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; color: #fff; }
-        .process-text { font-size: 14px; font-weight: 400; line-height: 1.6; color: rgba(255, 255, 255, 0.45); }
+        .process-num { font-size: 96px; font-weight: 300; background: linear-gradient(180deg, rgba(139, 92, 246, 0.5), rgba(139, 92, 246, 0.1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin-bottom: 28px; }
+        .process-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; }
+        .process-text { font-size: 15px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); }
 
         .bloggers-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 20px; padding: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
         .bloggers-list { background: rgba(10, 10, 12, 0.6); border: 1px solid rgba(139, 92, 246, 0.08); border-radius: 16px; padding: 36px; }
@@ -374,6 +383,8 @@ export default function VikitayWebsite() {
           .why-us-title { grid-column: 1 / -1; padding-left: 72px; margin-top: -44px; }
           .process-grid { grid-template-columns: repeat(3, 1fr); }
           .process-card:nth-child(3) { border-right: 1px solid rgba(139, 92, 246, 0.15); }
+          .process-card { padding: 40px 28px; }
+          .process-num { font-size: 72px; }
         }
         @media (max-width: 640px) {
           .section { padding: 80px 24px; margin: 0 12px 12px; border-radius: 16px; }
@@ -400,7 +411,7 @@ export default function VikitayWebsite() {
           .why-us-item { position: relative; }
           .process-grid { grid-template-columns: repeat(2, 1fr); }
           .process-card:nth-child(2n) { border-right: 1px solid rgba(139, 92, 246, 0.15); }
-          .process-card { border-right: none; }
+          .process-card { border-right: none; padding: 32px 24px; }
           .process-num { font-size: 56px; }
         }
       `}</style>
@@ -414,7 +425,18 @@ export default function VikitayWebsite() {
           </Link>
           <div className="nav-links">
             <a href="#about" className="nav-link">О нас</a>
-            <a href="#services" className="nav-link">Услуги</a>
+            <div className="nav-dropdown">
+              <button className="nav-dropdown-trigger">Услуги</button>
+              <div className="nav-dropdown-menu">
+                <Link to="/services/consultation">Консультация «Лёгкий старт»</Link>
+                <Link to="/services/strategy">Стратегическая сессия</Link>
+                <Link to="/services/stm">Разработка и упаковка СТМ</Link>
+                <Link to="/services/product-line">Продуктовая линейка</Link>
+                <Link to="/services/buyer">Услуга байера</Link>
+                <Link to="/services/procurement">Закуп и поставка товара</Link>
+                <Link to="/services/business-tour">Бизнес-тур в Китай</Link>
+              </div>
+            </div>
             <a href="#cases" className="nav-link">Кейсы</a>
             <a href="#contact" className="nav-link">Контакты</a>
             <a href="#contact" className="nav-btn">Консультация</a>
@@ -733,7 +755,15 @@ export default function VikitayWebsite() {
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                 />
               </div>
-              <button type="submit" className="form-submit">Записаться на консультацию</button>
+              
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', marginTop: '4px' }}>
+                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} required style={{ marginTop: '2px', accentColor: '#7c3aed', width: '16px', height: '16px', flexShrink: 0 }} />
+                <span style={{ fontSize: '13px', color: 'rgba(196, 181, 253, 0.7)', lineHeight: '1.4' }}>
+                  Я соглашаюсь на{' '}
+                  <a href="#" style={{ color: '#c4b5fd', textDecoration: 'underline' }}>обработку персональных данных</a>
+                </span>
+              </label>
+              <button type="submit" className="form-submit" disabled={!consent} style={!consent ? { opacity: 0.4, cursor: 'not-allowed' } : {}}>Записаться на консультацию</button>
             </form>
           </Reveal>
         </div>

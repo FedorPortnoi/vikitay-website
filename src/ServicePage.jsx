@@ -75,7 +75,7 @@ export default function ServicePage({ service }) {
         .service-hero { min-height: 60vh; display: flex; align-items: flex-end; padding: 0 0 80px 0; position: relative; overflow: hidden; }
         .service-hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
         .service-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-        .service-hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(26, 10, 46, 0.3) 0%, rgba(13, 13, 15, 0.7) 50%, rgba(13, 13, 15, 1) 100%); }
+        .service-hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(26, 10, 46, 0.1) 0%, rgba(13, 13, 15, 0.4) 50%, rgba(13, 13, 15, 1) 100%); }
         .service-hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 0 48px; width: 100%; }
         .service-hero-title { font-size: clamp(32px, 5vw, 56px); font-weight: 200; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.5px; color: #fff; }
         .service-hero-title span { background: linear-gradient(135deg, #c4b5fd, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
