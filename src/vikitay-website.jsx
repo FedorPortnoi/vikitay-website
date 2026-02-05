@@ -439,9 +439,7 @@ export default function VikitayWebsite() {
             <div className="nav-dropdown">
               <button className="nav-dropdown-trigger">О нас</button>
               <div className="nav-dropdown-menu">
-                <a href="#about">О компании</a>
-                <a href="#team">Команда</a>
-                <a href="#values">Наши ценности</a>
+                <a href="#about">Команда</a>
               </div>
             </div>
             <div className="nav-dropdown">
