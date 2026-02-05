@@ -81,7 +81,6 @@ export default function VikitayWebsite() {
   const [consent, setConsent] = useState(false);
   const [callbackOpen, setCallbackOpen] = useState(false);
   const [callbackData, setCallbackData] = useState({ name: '', phone: '' });
-  const [callbackSent, setCallbackSent] = useState(false);
   const [formSent, setFormSent] = useState(false);
   const [questionOpen, setQuestionOpen] = useState(false);
   const [questionData, setQuestionData] = useState({ name: '', phone: '', question: '' });
