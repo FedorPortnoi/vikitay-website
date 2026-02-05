@@ -79,6 +79,7 @@ export default function VikitayWebsite() {
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [formData, setFormData] = useState({ name: '', phone: '', messenger: 'whatsapp', message: '' });
   const [consent, setConsent] = useState(false);
+  const [formSent, setFormSent] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -421,6 +422,10 @@ export default function VikitayWebsite() {
           .process-card { border-right: none; padding: 32px 24px; }
           .process-num { font-size: 56px; }
         }
+      @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
       `}</style>
 
       <div className="mouse-glow" style={{ left: `${mousePos.x}%`, top: `${mousePos.y}%` }} />
@@ -703,6 +708,13 @@ export default function VikitayWebsite() {
           <Reveal><h2 className="section-title">Хотите бизнес с Китаем,<br /><span>который не стыдно показывать?</span></h2></Reveal>
           <Reveal delay={0.1}><p className="section-desc">Оставьте заявку — обсудим ваш проект и найдём лучшее решение.</p></Reveal>
           <Reveal delay={0.2}>
+            {formSent ? (
+              <div className="cta-form" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '300px', animation: 'fadeInUp 0.8s ease' }}>
+                <div style={{ fontSize: '64px', marginBottom: '24px', animation: 'fadeInUp 0.6s ease' }}>✓</div>
+                <h3 style={{ color: '#c4b5fd', fontSize: '24px', fontWeight: 500, marginBottom: '12px' }}>Заявка отправлена!</h3>
+                <p style={{ color: 'rgba(196, 181, 253, 0.6)', fontSize: '15px' }}>Мы свяжемся с вами в ближайшее время</p>
+              </div>
+            ) : (
             <form className="cta-form" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div>
@@ -772,6 +784,7 @@ export default function VikitayWebsite() {
               </label>
               <button type="submit" className="form-submit" disabled={!consent} style={!consent ? { opacity: 0.4, cursor: 'not-allowed' } : {}}>Записаться на консультацию</button>
             </form>
+            )}
           </Reveal>
         </div>
       </section>
