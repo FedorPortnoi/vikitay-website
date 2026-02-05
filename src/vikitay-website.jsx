@@ -233,7 +233,7 @@ export default function VikitayWebsite() {
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 48px; position: relative; overflow: hidden; margin: 0 40px 20px; border-radius: 24px; }
         .hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; overflow: hidden; }
         .hero-bg video { width: 100%; height: 100%; object-fit: cover; }
-        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(13, 13, 15, 0.35) 0%, rgba(13, 13, 15, 0.4) 50%, rgba(13, 13, 15, 0.9) 90%, rgba(13, 13, 15, 1) 100%); z-index: 1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(13, 13, 15, 0.7) 0%, rgba(13, 13, 15, 0.65) 50%, rgba(13, 13, 15, 0.9) 90%, rgba(13, 13, 15, 1) 100%); z-index: 1; }
         .hero-content { position: relative; z-index: 2; max-width: 850px; }
         .hero-label { font-size: 12px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #a78bfa; margin-bottom: 32px; }
         .hero-title { font-size: clamp(40px, 5.5vw, 72px); font-weight: 700; line-height: 1.15; margin-bottom: 28px; letter-spacing: -1.5px; color: #fff; }
@@ -436,7 +436,14 @@ export default function VikitayWebsite() {
             <img src="/images/final2-1.png" alt="VIKITAY" />
           </Link>
           <div className="nav-links">
-            <a href="#about" className="nav-link">О нас</a>
+            <div className="nav-dropdown">
+              <button className="nav-dropdown-trigger">О нас</button>
+              <div className="nav-dropdown-menu">
+                <a href="#about">О компании</a>
+                <a href="#team">Команда</a>
+                <a href="#values">Наши ценности</a>
+              </div>
+            </div>
             <div className="nav-dropdown">
               <button className="nav-dropdown-trigger">Услуги</button>
               <div className="nav-dropdown-menu">
@@ -450,7 +457,15 @@ export default function VikitayWebsite() {
               </div>
             </div>
             <a href="#cases" className="nav-link">Кейсы</a>
-            <a href="#contact" className="nav-link">Контакты</a>
+            <div className="nav-dropdown">
+              <button className="nav-dropdown-trigger">Контакты</button>
+              <div className="nav-dropdown-menu">
+                <a href="https://wa.me/79180859298" target="_blank" rel="noopener noreferrer"><span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '12px' }}>WhatsApp / Телефон</span><br/>+7 (918) 085-92-98</a>
+                <a href="mailto:vikitay.group@gmail.com">vikitay.group@gmail.com</a>
+                <a href="https://t.me/vikitaygroup" target="_blank" rel="noopener noreferrer">Telegram</a>
+                <a href="https://vk.ru/club235149585" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+              </div>
+            </div>
             <a href="#contact" className="nav-btn">Консультация</a>
           </div>
           <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
@@ -474,9 +489,6 @@ export default function VikitayWebsite() {
           <video autoPlay muted loop playsInline src="/images/hero-video.mp4" />
         </div>
         <div className="hero-overlay" />
-        <CherryBranch style={{ position: 'absolute', right: '5%', top: '10%', width: '180px', zIndex: 2 }} light />
-        <CherryBranch style={{ position: 'absolute', left: '3%', bottom: '15%', width: '150px', zIndex: 2 }} flip light />
-        <FloatingOrb size={350} x={15} y={25} delay={0} duration={25} color="rgba(139, 92, 246, 0.15)" />
         <FloatingOrb size={250} x={80} y={60} delay={5} duration={20} color="rgba(167, 139, 250, 0.1)" />
         <div className="hero-content">
           <Reveal><h1 className="hero-title">Бизнес с Китаем «под ключ» —<br /><span>от идеи до регулярных поставок.</span></h1></Reveal>
