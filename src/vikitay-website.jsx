@@ -261,7 +261,13 @@ export default function VikitayWebsite() {
         .nav-dropdown-menu a { display: block; padding: 10px 24px; font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.6); text-decoration: none; transition: all 0.2s; letter-spacing: 0.3px; }
         .nav-dropdown-menu a:hover { color: #c4b5fd; background: rgba(139, 92, 246, 0.08); }
         .nav-btn { font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 12px 28px; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; border-radius: 100px; color: #fff; cursor: pointer; transition: all 0.3s; text-decoration: none; }
-        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -8px rgba(139, 92, 246, 0.5); }
+        .nav-phone { display: flex; align-items: center; gap: 12px; text-decoration: none; transition: all 0.3s; }
+        .nav-phone:hover { opacity: 0.8; }
+        .nav-phone-info { display: flex; flex-direction: column; align-items: flex-end; }
+        .nav-phone-status { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); display: flex; align-items: center; gap: 6px; }
+        .nav-phone-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; display: inline-block; }
+        .nav-phone-number { font-size: 14px; font-weight: 500; color: #fff; letter-spacing: 0.5px; }
+        .nav-phone-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #7c3aed, #9333ea); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
 
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 48px; position: relative; overflow: hidden; margin: 0 40px 20px; border-radius: 24px; }
         .hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; overflow: hidden; }
@@ -526,6 +532,13 @@ export default function VikitayWebsite() {
               </div>
             </div>
             <a href="#contact" className="nav-btn">Консультация</a>
+            <a href="tel:+79180859298" className="nav-phone">
+              <div className="nav-phone-info">
+                <span className="nav-phone-status">мы онлайн <span className="nav-phone-dot" /></span>
+                <span className="nav-phone-number">+7 918 085-92-98</span>
+              </div>
+              <span className="nav-phone-icon">📞</span>
+            </a>
           </div>
           <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
             <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
