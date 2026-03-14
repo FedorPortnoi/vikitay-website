@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import VikitayWebsite from './vikitay-website';
 import ServicePage from './ServicePage';
+import CasePage from './CasePage';
 import { servicesDataRu } from './servicesData';
 
 function App() {
@@ -15,6 +16,14 @@ function App() {
         <Route path="/services/buyer" element={<ServicePage service={servicesDataRu.buyer} />} />
         <Route path="/services/procurement" element={<ServicePage service={servicesDataRu.procurement} />} />
         <Route path="/services/business-tour" element={<ServicePage service={servicesDataRu.businessTour} />} />
+        <Route path="/services/analysis" element={<ServicePage service={servicesDataRu.analysis} />} />
+        <Route path="/services/branding" element={<ServicePage service={servicesDataRu.branding} />} />
+        <Route path="/services/packages" element={<ServicePage service={servicesDataRu.packages} />} />
+        <Route path="/cases/broshi" element={<CasePage caseId="broshi" />} />
+        <Route path="/cases/zhemchug" element={<CasePage caseId="zhemchug" />} />
+        <Route path="/cases/parket" element={<CasePage caseId="parket" />} />
+        <Route path="/cases/stil" element={<CasePage caseId="stil" />} />
+        <Route path="/cases/klassika" element={<CasePage caseId="klassika" />} />
       </Routes>
     </BrowserRouter>
   );

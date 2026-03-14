@@ -154,8 +154,7 @@ export default function ServicePage({ service }) {
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-inner">
           <Link to="/" className="logo">
-            <div className="logo-icon">V</div>
-            <span className="logo-text">VIKITAY</span>
+            <img src="/images/logo.png" alt="VIKITAY" style={{ height: '40px' }} />
           </Link>
           <div className="nav-links">
             <Link to="/#about" className="nav-link">О нас</Link>
@@ -268,8 +267,7 @@ export default function ServicePage({ service }) {
         <div className="footer-inner">
           <div className="footer-about">
             <Link to="/" className="logo">
-              <div className="logo-icon">V</div>
-              <span className="logo-text">VIKITAY GROUP</span>
+              <img src="/images/logo.png" alt="VIKITAY GROUP" style={{ height: '55px' }} />
             </Link>
             <p>Стратегический партнёр по бизнесу с Китаем. Мы управляем сложным, чтобы вы спокойно росли.</p>
           </div>

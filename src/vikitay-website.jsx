@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import OrbitImages from './OrbitImages';
 
 const useInView = (threshold = 0.1) => {
   const ref = useRef(null);
@@ -178,6 +179,24 @@ export default function VikitayWebsite() {
       desc: 'Организованная поездка в Гуанчжоу на 5 дней: фабрики, шоу-румы, образцы, обучение и сопровождение.',
       image: '/images/service-tour.png',
       link: '/services/business-tour'
+    },
+    {
+      title: 'Анализ ниши и продуктовый скаутинг',
+      desc: 'Определяем, на какие товары стоит делать ставку. Выявляем перспективные направления и новинки с высоким потенциалом маржи.',
+      image: '/images/service-analysis.png',
+      link: '/services/analysis'
+    },
+    {
+      title: 'Подбор упаковки и брендирование товара',
+      desc: 'Подбираем оптимальное решение по упаковке и технологии нанесения логотипа — от концепции до готового ТЗ для фабрики.',
+      image: '/images/service-branding.png',
+      link: '/services/branding'
+    },
+    {
+      title: 'Комплексные пакеты «Под ключ»',
+      desc: 'Стратегия, продукт, упаковка, производство — в одной управляемой модели. Пакеты Старт, Рост и Премиум.',
+      image: '/images/service-packages.png',
+      link: '/services/packages'
     }
   ];
 
@@ -226,9 +245,12 @@ export default function VikitayWebsite() {
   ];
 
   const cases = [
-    { id: 1, title: 'Скоро', desc: 'Здесь появится кейс' },
-    { id: 2, title: 'Скоро', desc: 'Здесь появится кейс' },
-    { id: 3, title: 'Скоро', desc: 'Здесь появится кейс' }
+    { id: 1, image: '/images/case-broshi.jpg', link: '/cases/broshi' },
+    { id: 2, image: '/images/case-zhemchug.jpg', link: '/cases/zhemchug' },
+    { id: 3, image: '/images/case-klassika.jpg', link: '/cases/klassika' },
+    { id: 4, image: '/images/case-parket.jpg', link: '/cases/parket' },
+    { id: 5, image: '/images/case-stil.jpg', link: '/cases/stil' },
+    { id: 6, image: '/images/case-retail.jpg', link: '/cases/retail' }
   ];
 
   return (
@@ -275,7 +297,7 @@ export default function VikitayWebsite() {
         .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(13, 13, 15, 0.7) 0%, rgba(13, 13, 15, 0.65) 50%, rgba(13, 13, 15, 0.9) 90%, rgba(13, 13, 15, 1) 100%); z-index: 1; }
         .hero-content { position: relative; z-index: 2; max-width: 850px; }
         .hero-label { font-size: 12px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #a78bfa; margin-bottom: 32px; }
-        .hero-title { font-size: clamp(40px, 5.5vw, 72px); font-weight: 700; line-height: 1.15; margin-bottom: 28px; letter-spacing: -1.5px; color: #fff; }
+        .hero-title { font-size: clamp(36px, 5vw, 58px); font-weight: 700; line-height: 1.15; margin-bottom: 28px; letter-spacing: -1.5px; color: #fff; }
         .hero-title span { color: #fff; -webkit-text-fill-color: #fff; background: none; }
         .hero-subtitle { font-size: 17px; font-weight: 300; line-height: 1.7; color: #fff; max-width: 600px; margin: 0 auto 48px; letter-spacing: 0.2px; }
         .hero-btns { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -349,8 +371,8 @@ export default function VikitayWebsite() {
         .services-grid > div { height: 100%; }
         .service-card { height: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
         .service-card:hover { transform: translateY(-6px); border-color: rgba(139, 92, 246, 0.2); box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.3); }
-        .service-image { aspect-ratio: 16/10; overflow: hidden; }
-        .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .service-image { aspect-ratio: 4/3; overflow: hidden; }
+        .service-image img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .service-card:hover .service-image img { transform: scale(1.05); }
         .service-content { padding: 28px; display: flex; flex-direction: column; flex: 1; }
         .service-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; letter-spacing: 0.2px; color: #fff; }
@@ -563,8 +585,9 @@ export default function VikitayWebsite() {
         <div className="hero-overlay" />
         <FloatingOrb size={250} x={80} y={60} delay={5} duration={20} color="rgba(167, 139, 250, 0.1)" />
         <div className="hero-content">
-          <Reveal><h1 className="hero-title">Бизнес с Китаем «под ключ» —<br /><span>от идеи до регулярных поставок.</span></h1></Reveal>
-          <Reveal delay={0.1}><p className="hero-subtitle">Vikitay Group – стратегический партнер по работе с Китаем</p></Reveal>
+          <Reveal><h1 className="hero-title">Бизнес с Китаем<br />«под ключ» —<br /><span>от идеи до регулярных поставок.</span></h1></Reveal>
+
+          <Reveal delay={0.1}><p className="hero-subtitle">Vikitay Group – ОФИЦИАЛЬНЫЙ ПРЕДСТАВИТЕЛЬ НЕСКОЛЬКИХ ФАБРИК КОЖГАЛАНТЕРЕИ И ПРОИЗВОДСТВ БИЖУТЕРИИ В КИТАЕ</p></Reveal>
           <Reveal delay={0.2}><div className="hero-btns"><a href="#contact" className="btn-primary">Получить консультацию</a></div></Reveal>
         </div>
       </section>
@@ -789,16 +812,23 @@ export default function VikitayWebsite() {
               <p>Смотрите наши решения и примеряйте на свой бизнес: что из этого может сработать у вас уже сейчас?</p>
             </div>
           </Reveal>
-          <div className="cases-grid">
-            {cases.map((c, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div className="case-card">
-                  <h3 className="case-title">{c.title}</h3>
-                  <p className="case-desc">{c.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div style={{ height: '600px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '110px', transform: 'translateX(90px)' }}>
+            <OrbitImages
+              images={cases.map(c => c.image)}
+              shape="ellipse"
+              radiusX={450}
+              radiusY={150}
+              rotation={-5}
+              duration={55}
+              itemSize={160}
+              responsive={true}
+              direction="normal"
+              fill
+              paused={false}
+              onImageClick={(index) => window.location.href = cases[index].link}
+            />
           </div>
+          
         </div>
       </section>
 
