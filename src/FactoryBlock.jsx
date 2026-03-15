@@ -42,6 +42,72 @@ export default function FactoryBlock({
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
+  // Factory photos carousel state
+  const fpScrollRef = useRef(null);
+  const fpDragRef = useRef({ active: false, startX: 0, lastX: 0, scrollStart: 0, moved: false, velocity: 0, lastTime: 0, animId: 0 });
+  const [fpDragging, setFpDragging] = useState(false);
+  const fpMoved = useRef(false);
+
+  const fpScroll = useCallback((dir) => {
+    const el = fpScrollRef.current;
+    if (!el) return;
+    const dist = dir * 292; // 280 + 12 gap
+    const start = el.scrollLeft;
+    const startTime = performance.now();
+    const duration = 300;
+    const animate = (now) => {
+      const t = Math.min((now - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.scrollLeft = start + dist * ease;
+      if (t < 1) requestAnimationFrame(animate);
+    };
+    cancelAnimationFrame(fpDragRef.current.animId);
+    fpDragRef.current.animId = requestAnimationFrame(animate);
+  }, []);
+
+  const onFpDragStart = useCallback((e) => {
+    const el = fpScrollRef.current;
+    if (!el) return;
+    cancelAnimationFrame(fpDragRef.current.animId);
+    const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+    fpDragRef.current = { ...fpDragRef.current, active: true, startX: clientX, lastX: clientX, scrollStart: el.scrollLeft, moved: false, velocity: 0, lastTime: performance.now() };
+    fpMoved.current = false;
+    setFpDragging(true);
+  }, []);
+
+  const onFpDragMove = useCallback((e) => {
+    const d = fpDragRef.current;
+    if (!d.active) return;
+    const el = fpScrollRef.current;
+    if (!el) return;
+    const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+    const now = performance.now();
+    const dt = now - d.lastTime || 1;
+    d.velocity = (d.lastX - clientX) / dt * 16;
+    d.lastX = clientX;
+    d.lastTime = now;
+    const diff = clientX - d.startX;
+    el.scrollLeft = d.scrollStart - diff;
+    if (Math.abs(diff) > 5) { d.moved = true; fpMoved.current = true; }
+  }, []);
+
+  const onFpDragEnd = useCallback(() => {
+    const d = fpDragRef.current;
+    d.active = false;
+    setFpDragging(false);
+    const el = fpScrollRef.current;
+    if (!el || Math.abs(d.velocity) < 0.5) return;
+    let v = d.velocity;
+    const friction = 0.92;
+    const coast = () => {
+      v *= friction;
+      if (Math.abs(v) < 0.5) return;
+      el.scrollLeft += v;
+      fpDragRef.current.animId = requestAnimationFrame(coast);
+    };
+    fpDragRef.current.animId = requestAnimationFrame(coast);
+  }, []);
+
   // Keyboard navigation for lightbox
   useEffect(() => {
     if (lightboxIndex < 0) return;
@@ -98,15 +164,8 @@ export default function FactoryBlock({
           padding: 8px 0;
         }
         .factory-block-carousel::-webkit-scrollbar { display: none; }
-        .factory-block-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 16px;
-        }
+        .factory-photos-carousel::-webkit-scrollbar { display: none; }
         @media (max-width: 640px) {
-          .factory-block-grid {
-            grid-template-columns: 1fr;
-          }
           .factory-block-section {
             padding: 80px 24px !important;
           }
@@ -168,39 +227,71 @@ export default function FactoryBlock({
             </div>
           </Reveal>
 
-          {/* Factory Photos Grid */}
+          {/* Factory Photos Carousel */}
           {factoryPhotos.length > 0 && (
             <Reveal delay={0.1}>
-              <div
-                className="factory-block-grid"
-                style={{
-                  marginBottom: certificates.length > 0 || productPhotos.length > 0 ? 48 : 0,
-                }}
-              >
-                {factoryPhotos.map((src, i) => (
-                  <div key={i} style={{
-                    borderRadius: 16,
-                    overflow: 'hidden',
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(139,92,246,0.1)',
-                    aspectRatio: '4 / 3',
-                  }}>
-                    <img
-                      src={src}
-                      alt={`${name} — фото ${i + 1}`}
-                      loading="lazy"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        display: 'block',
-                        transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-                      }}
-                      onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                      onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                    />
+              <div style={{ marginBottom: certificates.length > 0 || productPhotos.length > 0 ? 48 : 0 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+                  <p style={{ fontSize: 12, fontWeight: 400, letterSpacing: 4, textTransform: 'uppercase', color: '#a78bfa', margin: 0 }}>
+                    Фабрика
+                  </p>
+                  <div style={{ display: 'flex', gap: 10 }}>
+                    <button onClick={() => fpScroll(-1)} aria-label="Назад" style={{
+                      width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(167,139,250,0.3)',
+                      background: 'rgba(139,92,246,0.15)', color: '#c4b5fd', cursor: 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20,
+                      transition: 'all 0.3s ease', fontFamily: "'Jost', sans-serif",
+                    }}>&#8592;</button>
+                    <button onClick={() => fpScroll(1)} aria-label="Вперёд" style={{
+                      width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(167,139,250,0.3)',
+                      background: 'rgba(139,92,246,0.15)', color: '#c4b5fd', cursor: 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20,
+                      transition: 'all 0.3s ease', fontFamily: "'Jost', sans-serif",
+                    }}>&#8594;</button>
                   </div>
-                ))}
+                </div>
+                <div
+                  ref={fpScrollRef}
+                  onMouseDown={onFpDragStart}
+                  onMouseMove={onFpDragMove}
+                  onMouseUp={onFpDragEnd}
+                  onMouseLeave={onFpDragEnd}
+                  onTouchStart={onFpDragStart}
+                  onTouchMove={onFpDragMove}
+                  onTouchEnd={onFpDragEnd}
+                  style={{
+                    display: 'flex', gap: 12, overflowX: 'scroll',
+                    WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none',
+                    cursor: fpDragging ? 'grabbing' : 'grab', userSelect: 'none',
+                    padding: '4px 0',
+                  }}
+                  className="factory-photos-carousel"
+                >
+                  {factoryPhotos.map((src, i) => (
+                    <div key={i} style={{
+                      flex: '0 0 280px', width: 280, height: 200,
+                      borderRadius: 16, overflow: 'hidden',
+                      background: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(139,92,246,0.1)',
+                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                    }}
+                      onMouseEnter={e => { if (!fpDragging) { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.25)'; }}}
+                      onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.1)'; }}
+                    >
+                      <img
+                        src={src}
+                        alt={`${name} — фото ${i + 1}`}
+                        loading="lazy"
+                        draggable={false}
+                        style={{
+                          width: '100%', height: '100%',
+                          objectFit: 'cover', objectPosition: 'center',
+                          display: 'block', pointerEvents: 'none',
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </Reveal>
           )}
