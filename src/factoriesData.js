@@ -1,5 +1,4 @@
-const range = (n, path, ext) =>
-  Array.from({ length: n }, (_, i) => `${path}/product-${String(i + 1).padStart(2, '0')}.${ext}`);
+const p = (path, n) => `${path}/product-${String(n).padStart(2, '0')}.jpg`;
 
 export const factoriesData = [
   {
@@ -13,7 +12,10 @@ export const factoriesData = [
       '/factories/oufeiya/factory/factory-4.jpg',
     ],
     certificates: [],
-    productPhotos: range(20, '/factories/oufeiya/products', 'jpg'),
+    // 6 human (05,06,07,08,09,10) + 14 product — pattern: H,P,P, H,P,P, H,P,P,P, H,P,P, H,P,P, H,P,P,P
+    productPhotos: [
+      5, 1, 2, 6, 3, 4, 7, 11, 12, 13, 8, 14, 15, 9, 16, 17, 10, 18, 19, 20,
+    ].map(n => p('/factories/oufeiya/products', n)),
   },
   {
     name: 'HONGBANG LEATHER CO. LTD',
@@ -32,7 +34,10 @@ export const factoriesData = [
       '/factories/hongbang/certificates/cert-3.jpg',
       '/factories/hongbang/certificates/cert-4.jpg',
     ],
-    productPhotos: range(20, '/factories/hongbang/products', 'jpg'),
+    // 7 human (04,05,06,10,12,14,19) + 13 product — pattern: H,P,P repeating, last cycle H,P
+    productPhotos: [
+      4, 1, 2, 5, 3, 7, 6, 8, 9, 10, 11, 13, 12, 15, 16, 14, 17, 18, 19, 20,
+    ].map(n => p('/factories/hongbang/products', n)),
   },
   {
     name: 'GUANGZHOU PEISHANG JEWELRY CO. LTD',
@@ -46,7 +51,10 @@ export const factoriesData = [
       '/factories/peishang/factory/factory-5.webp',
     ],
     certificates: [],
-    productPhotos: range(20, '/factories/peishang/products', 'jpg'),
+    // 3 human (05,14,17) + 17 product — humans at positions 1,8,14
+    productPhotos: [
+      5, 1, 2, 3, 4, 6, 7, 14, 8, 9, 10, 11, 12, 17, 13, 15, 16, 18, 19, 20,
+    ].map(n => p('/factories/peishang/products', n)),
   },
   {
     name: 'XLENTAG',
@@ -54,6 +62,9 @@ export const factoriesData = [
       'XLENTAG — производитель уникальных украшений с натуральным жемчугом и камнями.',
     factoryPhotos: [],
     certificates: [],
-    productPhotos: range(20, '/factories/xlentag/products', 'jpg'),
+    // 13 human (01,03,04,05,06,08,11,12,13,14,15,16,20) + 7 product — products at every ~3rd pos
+    productPhotos: [
+      1, 2, 3, 4, 7, 5, 6, 9, 8, 11, 10, 12, 13, 17, 14, 15, 18, 16, 20, 19,
+    ].map(n => p('/factories/xlentag/products', n)),
   },
 ];
