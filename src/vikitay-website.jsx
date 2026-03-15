@@ -200,13 +200,6 @@ export default function VikitayWebsite() {
     }
   ];
 
-  const niches = [
-    { name: 'Кожгалантерея и сумки', image: '/images/niche-leather.png' },
-    { name: 'Ювелирные украшения', image: '/images/niche-jewelry.png' },
-    { name: 'Интерьерные решения', image: '/images/niche-interior.png' },
-    { name: 'Строительные материалы', image: '/images/niche-construction.png' }
-  ];
-
   const steps = [
     { n: '01', title: 'Идея', text: 'Анализируем рынок и находим вашу нишу' },
     { n: '02', title: 'Стратегия', text: 'Строим бизнес-модель и план действий' },
@@ -353,19 +346,6 @@ export default function VikitayWebsite() {
         .about-outro { text-align: center; max-width: 800px; margin: 0 auto; }
         .about-outro p { font-size: 16px; font-weight: 400; line-height: 1.8; color: rgba(255, 255, 255, 0.55); }
 
-        /* Niches with Images */
-        .niches-intro { text-align: center; max-width: 700px; margin: 0 auto 16px; }
-        .niches-intro p { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); }
-        .niches-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 50px; margin-bottom: 50px; }
-        .niche-card { background: transparent; border: none; border-radius: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; }
-        .niche-card:hover { transform: translateY(-6px); }
-        .niche-card:hover .niche-image img { transform: scale(1.06); }
-        .niche-image { aspect-ratio: 1/1; overflow: hidden; border-radius: 12px; }
-        .niche-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .niche-name { padding: 16px 4px 0; text-align: left; font-size: 17px; font-weight: 600; color: #fff; letter-spacing: 0.2px; }
-        .niches-outro { text-align: center; max-width: 800px; margin: 0 auto; }
-        .niches-outro p { font-size: 15px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.45); }
-
         /* Services with Images */
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 24px; margin-top: 70px; }
         .services-grid > div { height: 100%; }
@@ -443,7 +423,6 @@ export default function VikitayWebsite() {
           .mobile-menu-btn { display: block; }
           .founders-grid { grid-template-columns: 1fr; max-width: 450px; margin-left: auto; margin-right: auto; }
           .services-grid { grid-template-columns: repeat(2, 1fr); }
-          .niches-grid { grid-template-columns: repeat(2, 1fr); }
           .cases-grid { grid-template-columns: 1fr; }
           .bloggers-card { grid-template-columns: 1fr; padding: 44px; }
           .footer-inner { grid-template-columns: 1fr; gap: 36px; }
@@ -462,7 +441,6 @@ export default function VikitayWebsite() {
           .stat-item:nth-child(2) { border-right: none; }
           .stat-value { font-size: 48px; }
           .services-grid { grid-template-columns: 1fr; }
-          .niches-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
           .form-row { grid-template-columns: 1fr; }
           .hero { padding: 120px 24px; margin: 0 12px 12px; border-radius: 16px; }
           .hero-btns { flex-direction: column; }
@@ -711,40 +689,6 @@ export default function VikitayWebsite() {
                   <button onClick={() => setQuestionOpen(true)} className="cta-banner-btn cta-banner-btn-secondary">Задать вопрос</button>
                 </div>
               </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* NICHES SECTION */}
-      <section className="section bg-graphite">
-        <CherryBranch style={{ position: 'absolute', right: '5%', top: '5%', width: '150px' }} light />
-        <FloatingOrb size={280} x={15} y={40} delay={4} duration={22} color="rgba(139, 92, 246, 0.08)" />
-        <div className="section-inner">
-          <div className="section-center">
-            <Reveal><p className="section-label">Товарная специализация</p></Reveal>
-            <Reveal delay={0.1}><h2 className="section-title">Мы работаем там, где важны<br /><span>качество, дизайн и маржа</span></h2></Reveal>
-          </div>
-          <Reveal delay={0.15}>
-            <div className="niches-intro">
-              <p>VIKITAY GROUP специализируется на проектах среднего и высокого ценового сегмента и глубоко разбирается в категориях:</p>
-            </div>
-          </Reveal>
-          <div className="niches-grid">
-            {niches.map((n, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div className="niche-card">
-                  <div className="niche-image">
-                    <img src={n.image} alt={n.name} loading="lazy" />
-                  </div>
-                  <div className="niche-name">{n.name}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.4}>
-            <div className="niches-outro">
-              <p>Мы можем проработать всё — от фурнитуры и мелких деталей до оборудования и целых домов, но сознательно не работаем с FMCG-сегментом и «массовым ширпотребом». Наша зона ответственности — товары и проекты, где ценят вкус, долговечность и сильный продукт, а не просто минимальную цену.</p>
             </div>
           </Reveal>
         </div>
