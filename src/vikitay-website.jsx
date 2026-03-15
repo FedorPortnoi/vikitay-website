@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import OrbitImages from './OrbitImages';
+import FactoryBlock from './FactoryBlock';
+import { factoriesData } from './factoriesData';
 
 const useInView = (threshold = 0.1) => {
   const ref = useRef(null);
@@ -569,7 +571,18 @@ export default function VikitayWebsite() {
         </div>
       </section>
 
-
+      {/* FACTORY BLOCKS */}
+      {factoriesData.map((factory, i) => (
+        <FactoryBlock
+          key={factory.name}
+          name={factory.name}
+          description={factory.description}
+          factoryPhotos={factory.factoryPhotos}
+          certificates={factory.certificates}
+          productPhotos={factory.productPhotos}
+          reverse={i % 2 === 1}
+        />
+      ))}
 
       {/* WHY US SECTION */}
       <section className="section bg-graphite">
