@@ -21,7 +21,7 @@ function App() {
         <Route path="/services/packages" element={<ServicePage service={servicesDataRu.packages} />} />
         <Route path="/cases/broshi" element={<CasePage caseId="broshi" />} />
         <Route path="/cases/zhemchug" element={<CasePage caseId="zhemchug" />} />
-        <Route path="/cases/parket" element={<CasePage caseId="parket" />} />
+
         <Route path="/cases/stil" element={<CasePage caseId="stil" />} />
         <Route path="/cases/klassika" element={<CasePage caseId="klassika" />} />
         <Route path="/cases/retail" element={<CasePage caseId="retail" />} />

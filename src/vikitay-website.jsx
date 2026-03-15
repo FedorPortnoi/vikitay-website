@@ -241,9 +241,8 @@ export default function VikitayWebsite() {
     { id: 1, image: '/images/case-broshi.jpg', link: '/cases/broshi' },
     { id: 2, image: '/images/case-zhemchug.jpg', link: '/cases/zhemchug' },
     { id: 3, image: '/images/case-klassika.jpg', link: '/cases/klassika' },
-    { id: 4, image: '/images/case-parket.jpg', link: '/cases/parket' },
-    { id: 5, image: '/images/case-stil.jpg', link: '/cases/stil' },
-    { id: 6, image: '/images/case-retail.jpg', link: '/cases/retail' }
+    { id: 4, image: '/images/case-stil.jpg', link: '/cases/stil' },
+    { id: 5, image: '/images/case-retail.jpg', link: '/cases/retail' }
   ];
 
   return (

@@ -33,14 +33,6 @@ const casesData = {
       '/images/case-klassika-5.jpg',
     ],
   },
-  parket: {
-    title: 'Поставка паркетной доски из Китая',
-    images: [
-      '/images/case-parket-1.jpg',
-      '/images/case-parket-2.jpg',
-      '/images/case-parket-3.jpg',
-    ],
-  },
   stil: {
     title: 'Furry Chic — Коллекция уютных сумок',
     images: [
