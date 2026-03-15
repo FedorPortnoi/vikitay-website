@@ -48,23 +48,6 @@ export default function FactoryBlock({
   const [fpDragging, setFpDragging] = useState(false);
   const fpMoved = useRef(false);
 
-  const fpScroll = useCallback((dir) => {
-    const el = fpScrollRef.current;
-    if (!el) return;
-    const dist = dir * 292; // 280 + 12 gap
-    const start = el.scrollLeft;
-    const startTime = performance.now();
-    const duration = 300;
-    const animate = (now) => {
-      const t = Math.min((now - startTime) / duration, 1);
-      const ease = 1 - Math.pow(1 - t, 3);
-      el.scrollLeft = start + dist * ease;
-      if (t < 1) requestAnimationFrame(animate);
-    };
-    cancelAnimationFrame(fpDragRef.current.animId);
-    fpDragRef.current.animId = requestAnimationFrame(animate);
-  }, []);
-
   const onFpDragStart = useCallback((e) => {
     const el = fpScrollRef.current;
     if (!el) return;
@@ -155,7 +138,7 @@ export default function FactoryBlock({
       <style>{`
         .factory-block-carousel {
           display: flex;
-          gap: 20px;
+          gap: 12px;
           overflow-x: auto;
           scroll-snap-type: x mandatory;
           scroll-behavior: smooth;
@@ -171,19 +154,9 @@ export default function FactoryBlock({
           }
         }
         .factory-block-carousel-item {
-          flex: 0 0 calc(25% - 15px);
+          flex: 0 0 220px;
           scroll-snap-align: start;
           min-width: 0;
-        }
-        @media (max-width: 1024px) {
-          .factory-block-carousel-item {
-            flex: 0 0 calc(50% - 10px);
-          }
-        }
-        @media (max-width: 640px) {
-          .factory-block-carousel-item {
-            flex: 0 0 100%;
-          }
         }
       `}</style>
 
@@ -231,25 +204,9 @@ export default function FactoryBlock({
           {factoryPhotos.length > 0 && (
             <Reveal delay={0.1}>
               <div style={{ marginBottom: certificates.length > 0 || productPhotos.length > 0 ? 48 : 0 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-                  <p style={{ fontSize: 12, fontWeight: 400, letterSpacing: 4, textTransform: 'uppercase', color: '#a78bfa', margin: 0 }}>
-                    Фабрика
-                  </p>
-                  <div style={{ display: 'flex', gap: 10 }}>
-                    <button onClick={() => fpScroll(-1)} aria-label="Назад" style={{
-                      width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(167,139,250,0.3)',
-                      background: 'rgba(139,92,246,0.15)', color: '#c4b5fd', cursor: 'pointer',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20,
-                      transition: 'all 0.3s ease', fontFamily: "'Jost', sans-serif",
-                    }}>&#8592;</button>
-                    <button onClick={() => fpScroll(1)} aria-label="Вперёд" style={{
-                      width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(167,139,250,0.3)',
-                      background: 'rgba(139,92,246,0.15)', color: '#c4b5fd', cursor: 'pointer',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20,
-                      transition: 'all 0.3s ease', fontFamily: "'Jost', sans-serif",
-                    }}>&#8594;</button>
-                  </div>
-                </div>
+                <p style={{ fontSize: 12, fontWeight: 400, letterSpacing: 4, textTransform: 'uppercase', color: '#a78bfa', margin: 0, marginBottom: 20 }}>
+                  Фабрика
+                </p>
                 <div
                   ref={fpScrollRef}
                   onMouseDown={onFpDragStart}
@@ -380,8 +337,8 @@ export default function FactoryBlock({
                       onClick={() => scroll(-1)}
                       aria-label="Назад"
                       style={{
-                        width: 44,
-                        height: 44,
+                        width: 36,
+                        height: 36,
                         borderRadius: '50%',
                         border: '1px solid rgba(167,139,250,0.3)',
                         background: canScrollLeft ? 'rgba(139,92,246,0.15)' : 'transparent',
@@ -390,7 +347,7 @@ export default function FactoryBlock({
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: 20,
+                        fontSize: 16,
                         transition: 'all 0.3s ease',
                         fontFamily: "'Jost', sans-serif",
                       }}
@@ -401,8 +358,8 @@ export default function FactoryBlock({
                       onClick={() => scroll(1)}
                       aria-label="Вперёд"
                       style={{
-                        width: 44,
-                        height: 44,
+                        width: 36,
+                        height: 36,
                         borderRadius: '50%',
                         border: '1px solid rgba(167,139,250,0.3)',
                         background: canScrollRight ? 'rgba(139,92,246,0.15)' : 'transparent',
@@ -411,7 +368,7 @@ export default function FactoryBlock({
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: 20,
+                        fontSize: 16,
                         transition: 'all 0.3s ease',
                         fontFamily: "'Jost', sans-serif",
                       }}
@@ -429,11 +386,12 @@ export default function FactoryBlock({
                       className="factory-block-carousel-item"
                     >
                       <div style={{
+                        width: 220,
+                        height: 280,
                         borderRadius: 16,
                         overflow: 'hidden',
                         background: 'rgba(255,255,255,0.03)',
                         border: '1px solid rgba(139,92,246,0.1)',
-                        aspectRatio: '3 / 4',
                         transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                       }}
                         onMouseEnter={e => {

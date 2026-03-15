@@ -12,9 +12,9 @@ export const factoriesData = [
       '/factories/oufeiya/factory/factory-4.jpg',
     ],
     certificates: [],
-    // 6 human (05,06,07,08,09,10) + 14 product — pattern: H,P,P, H,P,P, H,P,P,P, H,P,P, H,P,P, H,P,P,P
+    // Color-separated order: blue, burg, brown, red, dkBrown, tan, burg, gray, tan, burg, red, burg, tan, burg, brown, burg, red, dkBrown, burg, brown
     productPhotos: [
-      5, 1, 2, 6, 3, 4, 7, 11, 12, 13, 8, 14, 15, 9, 16, 17, 10, 18, 19, 20,
+      4, 5, 1, 16, 13, 8, 11, 3, 14, 12, 2, 17, 9, 19, 7, 20, 6, 18, 10, 15,
     ].map(n => p('/factories/oufeiya/products', n)),
   },
   {
@@ -34,9 +34,9 @@ export const factoriesData = [
       '/factories/hongbang/certificates/cert-3.jpg',
       '/factories/hongbang/certificates/cert-4.jpg',
     ],
-    // 7 human (04,05,06,10,12,14,19) + 13 product — pattern: H,P,P repeating, last cycle H,P
+    // Color-separated order: green, burg, white, dkBrown, beige, burg, blue, brown, silver, black, beige, burg, sage, dkBrown, black, beige, black, mauve, brown, dkGray
     productPhotos: [
-      4, 1, 2, 5, 3, 7, 6, 8, 9, 10, 11, 13, 12, 15, 16, 14, 17, 18, 19, 20,
+      3, 5, 1, 9, 14, 17, 7, 12, 16, 4, 2, 18, 15, 11, 10, 8, 19, 13, 6, 20,
     ].map(n => p('/factories/hongbang/products', n)),
   },
   {
@@ -51,9 +51,8 @@ export const factoriesData = [
       '/factories/peishang/factory/factory-5.webp',
     ],
     certificates: [],
-    // 3 human (05,14,17) + 17 product — humans at positions 1,8,14
     productPhotos: [
-      5, 1, 2, 3, 4, 6, 7, 14, 8, 9, 10, 11, 12, 17, 13, 15, 16, 18, 19, 20,
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     ].map(n => p('/factories/peishang/products', n)),
   },
   {
@@ -62,9 +61,8 @@ export const factoriesData = [
       'XLENTAG — производитель уникальных украшений с натуральным жемчугом и камнями.',
     factoryPhotos: [],
     certificates: [],
-    // 13 human (01,03,04,05,06,08,11,12,13,14,15,16,20) + 7 product — products at every ~3rd pos
     productPhotos: [
-      1, 2, 3, 4, 7, 5, 6, 9, 8, 11, 10, 12, 13, 17, 14, 15, 18, 16, 20, 19,
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     ].map(n => p('/factories/xlentag/products', n)),
   },
 ];
