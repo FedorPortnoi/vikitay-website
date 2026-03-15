@@ -758,7 +758,7 @@ export default function VikitayWebsite() {
         <FloatingOrb size={320} x={80} y={35} delay={2} duration={26} color="rgba(139, 92, 246, 0.07)" />
         <div className="section-inner">
           <div className="section-center">
-            <Reveal><p className="section-label">Как мы работаем</p></Reveal>
+            <Reveal><p className="section-label">Принципы работы</p></Reveal>
             <Reveal delay={0.1}><h2 className="section-title">От идеи до<br /><span>первой прибыли</span></h2></Reveal>
           </div>
           <Reveal delay={0.2}>
