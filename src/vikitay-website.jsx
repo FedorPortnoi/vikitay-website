@@ -564,7 +564,7 @@ export default function VikitayWebsite() {
         <div className="hero-content">
           <Reveal><h1 className="hero-title">Бизнес с Китаем<br />«под ключ» —<br /><span>от идеи до регулярных поставок.</span></h1></Reveal>
 
-          <Reveal delay={0.1}><p className="hero-subtitle">Vikitay Group – ОФИЦИАЛЬНЫЙ ПРЕДСТАВИТЕЛЬ НЕСКОЛЬКИХ ФАБРИК КОЖГАЛАНТЕРЕИ И ПРОИЗВОДСТВ БИЖУТЕРИИ В КИТАЕ</p></Reveal>
+          <Reveal delay={0.1}><p className="hero-subtitle">Vikitay Group — ОФИЦИАЛЬНЫЙ ПРЕДСТАВИТЕЛЬ НЕСКОЛЬКИХ ФАБРИК КОЖГАЛАНТЕРЕИ И ПРОИЗВОДСТВ БИЖУТЕРИИ В КИТАЕ</p></Reveal>
           <Reveal delay={0.2}><div className="hero-btns"><a href="#contact" className="btn-primary">Получить консультацию</a></div></Reveal>
         </div>
       </section>
