@@ -249,36 +249,69 @@ export default function VikitayWebsite() {
 
   // Cases carousel state
   const casesScrollRef = useRef(null);
-  const [casesDrag, setCasesDrag] = useState({ active: false, startX: 0, scrollStart: 0, moved: false });
+  const casesDragRef = useRef({ active: false, startX: 0, lastX: 0, scrollStart: 0, moved: false, velocity: 0, lastTime: 0, animId: 0 });
+  const [casesDragging, setCasesDragging] = useState(false);
+  const casesMoved = useRef(false);
 
   const casesScroll = useCallback((dir) => {
     const el = casesScrollRef.current;
     if (!el) return;
     const card = el.querySelector('[data-case-card]');
-    if (card) el.scrollBy({ left: dir * (card.offsetWidth + 24), behavior: 'smooth' });
+    const dist = dir * ((card?.offsetWidth || 320) + 24);
+    const start = el.scrollLeft;
+    const startTime = performance.now();
+    const duration = 300;
+    const animate = (now) => {
+      const t = Math.min((now - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      el.scrollLeft = start + dist * ease;
+      if (t < 1) requestAnimationFrame(animate);
+    };
+    cancelAnimationFrame(casesDragRef.current.animId);
+    casesDragRef.current.animId = requestAnimationFrame(animate);
   }, []);
 
   const onCasesDragStart = useCallback((e) => {
     const el = casesScrollRef.current;
     if (!el) return;
+    cancelAnimationFrame(casesDragRef.current.animId);
     const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-    setCasesDrag({ active: true, startX: clientX, scrollStart: el.scrollLeft, moved: false });
+    casesDragRef.current = { ...casesDragRef.current, active: true, startX: clientX, lastX: clientX, scrollStart: el.scrollLeft, moved: false, velocity: 0, lastTime: performance.now() };
+    casesMoved.current = false;
+    setCasesDragging(true);
   }, []);
 
   const onCasesDragMove = useCallback((e) => {
-    setCasesDrag(prev => {
-      if (!prev.active) return prev;
-      const el = casesScrollRef.current;
-      if (!el) return prev;
-      const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-      const diff = clientX - prev.startX;
-      el.scrollLeft = prev.scrollStart - diff;
-      return { ...prev, moved: Math.abs(diff) > 5 };
-    });
+    const d = casesDragRef.current;
+    if (!d.active) return;
+    const el = casesScrollRef.current;
+    if (!el) return;
+    const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+    const now = performance.now();
+    const dt = now - d.lastTime || 1;
+    d.velocity = (d.lastX - clientX) / dt * 16; // px per frame at 60fps
+    d.lastX = clientX;
+    d.lastTime = now;
+    const diff = clientX - d.startX;
+    el.scrollLeft = d.scrollStart - diff;
+    if (Math.abs(diff) > 5) { d.moved = true; casesMoved.current = true; }
   }, []);
 
   const onCasesDragEnd = useCallback(() => {
-    setCasesDrag(prev => ({ ...prev, active: false }));
+    const d = casesDragRef.current;
+    d.active = false;
+    setCasesDragging(false);
+    const el = casesScrollRef.current;
+    if (!el || Math.abs(d.velocity) < 0.5) return;
+    let v = d.velocity;
+    const friction = 0.92;
+    const coast = () => {
+      v *= friction;
+      if (Math.abs(v) < 0.5) return;
+      el.scrollLeft += v;
+      casesDragRef.current.animId = requestAnimationFrame(coast);
+    };
+    casesDragRef.current.animId = requestAnimationFrame(coast);
   }, []);
 
   return (
@@ -828,24 +861,23 @@ export default function VikitayWebsite() {
                 onTouchMove={onCasesDragMove}
                 onTouchEnd={onCasesDragEnd}
                 style={{
-                  display: 'flex', gap: 24, overflowX: 'auto', scrollSnapType: 'x mandatory',
-                  scrollBehavior: casesDrag.active ? 'auto' : 'smooth',
+                  display: 'flex', gap: 24, overflowX: 'scroll',
                   WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', padding: '8px 0',
-                  cursor: casesDrag.active ? 'grabbing' : 'grab', userSelect: 'none',
+                  cursor: casesDragging ? 'grabbing' : 'grab', userSelect: 'none',
                 }}
               >
                 {cases.map((c, i) => (
                   <div
                     key={c.id}
                     data-case-card
-                    onClick={() => { if (!casesDrag.moved) navigate(c.link); }}
+                    onClick={() => { if (!casesMoved.current) navigate(c.link); }}
                     style={{
-                      flex: '0 0 calc(33.333% - 16px)', minWidth: 280, scrollSnapAlign: 'start',
+                      flex: '0 0 calc(33.333% - 16px)', minWidth: 280,
                       borderRadius: 16, overflow: 'hidden', cursor: 'pointer',
                       background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(139,92,246,0.1)',
                       transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                     }}
-                    onMouseEnter={e => { if (!casesDrag.active) { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.25)'; e.currentTarget.style.boxShadow = '0 25px 50px -15px rgba(0,0,0,0.3)'; }}}
+                    onMouseEnter={e => { if (!casesDragging) { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.25)'; e.currentTarget.style.boxShadow = '0 25px 50px -15px rgba(0,0,0,0.3)'; }}}
                     onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.1)'; e.currentTarget.style.boxShadow = 'none'; }}
                   >
                     <div style={{ aspectRatio: '4 / 3', overflow: 'hidden' }}>
