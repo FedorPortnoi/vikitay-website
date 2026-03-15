@@ -40,6 +40,23 @@ export default function FactoryBlock({
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (lightboxIndex < 0) return;
+    const handleKey = (e) => {
+      if (e.key === 'Escape') setLightboxIndex(-1);
+      if (e.key === 'ArrowRight') setLightboxIndex(i => (i + 1) % certificates.length);
+      if (e.key === 'ArrowLeft') setLightboxIndex(i => (i - 1 + certificates.length) % certificates.length);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKey);
+    };
+  }, [lightboxIndex, certificates.length]);
 
   const updateArrows = useCallback(() => {
     const el = scrollRef.current;
@@ -208,13 +225,27 @@ export default function FactoryBlock({
                   flexWrap: 'wrap',
                 }}>
                   {certificates.map((src, i) => (
-                    <div key={i} style={{
-                      borderRadius: 12,
-                      overflow: 'hidden',
-                      background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(139,92,246,0.1)',
-                      flex: '0 0 auto',
-                    }}>
+                    <div
+                      key={i}
+                      onClick={() => setLightboxIndex(i)}
+                      style={{
+                        borderRadius: 12,
+                        overflow: 'hidden',
+                        background: 'rgba(255,255,255,0.03)',
+                        border: '1px solid rgba(139,92,246,0.1)',
+                        flex: '0 0 auto',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.borderColor = 'rgba(139,92,246,0.3)';
+                        e.currentTarget.style.transform = 'translateY(-3px)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.borderColor = 'rgba(139,92,246,0.1)';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                    >
                       <img
                         src={src}
                         alt={`Сертификат ${i + 1}`}
@@ -345,6 +376,160 @@ export default function FactoryBlock({
           )}
         </div>
       </section>
+
+      {/* Certificate Lightbox */}
+      {lightboxIndex >= 0 && (
+        <div
+          data-lightbox
+          onClick={(e) => { if (e.target === e.currentTarget) setLightboxIndex(-1); }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            background: 'rgba(0,0,0,0.9)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            animation: 'certLightboxFadeIn 0.3s ease',
+            fontFamily: "'Jost', sans-serif",
+          }}
+        >
+          {/* Close button */}
+          <button
+            onClick={() => setLightboxIndex(-1)}
+            aria-label="Закрыть"
+            style={{
+              position: 'absolute',
+              top: 24,
+              right: 24,
+              width: 48,
+              height: 48,
+              borderRadius: '50%',
+              border: '1px solid rgba(167,139,250,0.4)',
+              background: 'rgba(139,92,246,0.2)',
+              color: '#c4b5fd',
+              fontSize: 24,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease',
+              fontFamily: "'Jost', sans-serif",
+              zIndex: 2,
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = 'rgba(139,92,246,0.4)';
+              e.currentTarget.style.borderColor = 'rgba(167,139,250,0.7)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = 'rgba(139,92,246,0.2)';
+              e.currentTarget.style.borderColor = 'rgba(167,139,250,0.4)';
+            }}
+          >
+            &#10005;
+          </button>
+
+          {/* Left arrow */}
+          {certificates.length > 1 && (
+            <button
+              onClick={() => setLightboxIndex(i => (i - 1 + certificates.length) % certificates.length)}
+              aria-label="Предыдущий"
+              style={{
+                position: 'absolute',
+                left: 24,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: 48,
+                height: 48,
+                borderRadius: '50%',
+                border: '1px solid rgba(167,139,250,0.3)',
+                background: 'rgba(139,92,246,0.15)',
+                color: '#c4b5fd',
+                fontSize: 22,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.3s ease',
+                fontFamily: "'Jost', sans-serif",
+                zIndex: 2,
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(139,92,246,0.35)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(139,92,246,0.15)'}
+            >
+              &#8592;
+            </button>
+          )}
+
+          {/* Right arrow */}
+          {certificates.length > 1 && (
+            <button
+              onClick={() => setLightboxIndex(i => (i + 1) % certificates.length)}
+              aria-label="Следующий"
+              style={{
+                position: 'absolute',
+                right: 24,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: 48,
+                height: 48,
+                borderRadius: '50%',
+                border: '1px solid rgba(167,139,250,0.3)',
+                background: 'rgba(139,92,246,0.15)',
+                color: '#c4b5fd',
+                fontSize: 22,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.3s ease',
+                fontFamily: "'Jost', sans-serif",
+                zIndex: 2,
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(139,92,246,0.35)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(139,92,246,0.15)'}
+            >
+              &#8594;
+            </button>
+          )}
+
+          {/* Image */}
+          <img
+            src={certificates[lightboxIndex]}
+            alt={`Сертификат ${lightboxIndex + 1}`}
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain',
+              borderRadius: 8,
+              zIndex: 1,
+            }}
+          />
+
+          {/* Counter */}
+          {certificates.length > 1 && (
+            <div style={{
+              position: 'absolute',
+              bottom: 24,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              color: 'rgba(255,255,255,0.5)',
+              fontSize: 14,
+              letterSpacing: 2,
+              zIndex: 2,
+            }}>
+              {lightboxIndex + 1} / {certificates.length}
+            </div>
+          )}
+        </div>
+      )}
+
+      <style>{`
+        @keyframes certLightboxFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+      `}</style>
 
     </>
   );
