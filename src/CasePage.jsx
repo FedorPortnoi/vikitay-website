@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const casesData = {
@@ -108,5 +108,3 @@ export default function CasePage({ caseId }) {
     </div>
   );
 }
-
-export { casesData };

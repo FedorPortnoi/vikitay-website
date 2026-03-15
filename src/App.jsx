@@ -24,6 +24,7 @@ function App() {
         <Route path="/cases/parket" element={<CasePage caseId="parket" />} />
         <Route path="/cases/stil" element={<CasePage caseId="stil" />} />
         <Route path="/cases/klassika" element={<CasePage caseId="klassika" />} />
+        <Route path="/cases/retail" element={<CasePage caseId="retail" />} />
       </Routes>
     </BrowserRouter>
   );

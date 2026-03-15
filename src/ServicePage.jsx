@@ -11,7 +11,7 @@ const useInView = (threshold = 0.1) => {
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, isInView];
 };
 
@@ -44,10 +44,6 @@ export default function ServicePage({ service }) {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  const scrollToContact = () => {
-    navigate('/#contact');
-  };
 
   return (
     <div className="vikitay-service">
