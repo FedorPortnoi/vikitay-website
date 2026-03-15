@@ -649,6 +649,34 @@ export default function VikitayWebsite() {
         />
       ))}
 
+      {/* SERVICES SECTION */}
+      <section id="services" className="section bg-purple">
+        <CherryBranch style={{ position: 'absolute', right: '3%', bottom: '10%', width: '170px' }} />
+        <FloatingOrb size={350} x={20} y={50} delay={3} duration={24} color="rgba(196, 181, 253, 0.08)" />
+        <div className="section-inner">
+          <div className="section-center">
+            <Reveal><p className="section-label">Услуги</p></Reveal>
+            <Reveal delay={0.1}><h2 className="section-title">Не разовые услуги.<br /><span>Системное партнёрство.</span></h2></Reveal>
+          </div>
+          <div className="services-grid">
+            {services.map((s, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src={s.image} alt={s.title} loading="lazy" />
+                  </div>
+                  <div className="service-content">
+                    <h3 className="service-title">{s.title}</h3>
+                    <p className="service-desc">{s.desc}</p>
+                    <Link to={s.link} className="service-btn">Подробнее</Link>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* WHY US SECTION */}
       <section className="section bg-graphite">
         <CherryBranch style={{ position: 'absolute', left: '2%', top: '10%', width: '140px' }} flip light />
@@ -724,53 +752,6 @@ export default function VikitayWebsite() {
         </div>
       </section>
 
-      {/* SERVICES SECTION */}
-      <section id="services" className="section bg-purple">
-        <CherryBranch style={{ position: 'absolute', right: '3%', bottom: '10%', width: '170px' }} />
-        <FloatingOrb size={350} x={20} y={50} delay={3} duration={24} color="rgba(196, 181, 253, 0.08)" />
-        <div className="section-inner">
-          <div className="section-center">
-            <Reveal><p className="section-label">Услуги</p></Reveal>
-            <Reveal delay={0.1}><h2 className="section-title">Не разовые услуги.<br /><span>Системное партнёрство.</span></h2></Reveal>
-          </div>
-          <div className="services-grid">
-            {services.map((s, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div className="service-card">
-                  <div className="service-image">
-                    <img src={s.image} alt={s.title} loading="lazy" />
-                  </div>
-                  <div className="service-content">
-                    <h3 className="service-title">{s.title}</h3>
-                    <p className="service-desc">{s.desc}</p>
-                    <Link to={s.link} className="service-btn">Подробнее</Link>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA BANNER */}
-      <section className="section bg-graphite">
-        <div className="section-inner">
-          <Reveal>
-            <div className="cta-banner">
-              <img src="/images/founder-svetlana.png" alt="Светлана Аксинас" className="cta-banner-img" />
-              <div className="cta-banner-content">
-                <h2 className="cta-banner-title">Давайте<br/>знакомиться!</h2>
-                <p className="cta-banner-text">Проконсультируем, ответим на вопросы, поможем начать бизнес с Китаем.</p>
-                <div className="cta-banner-btns">
-                  <button onClick={() => setCallbackOpen(true)} className="cta-banner-btn cta-banner-btn-primary">Обратный звонок ↗</button>
-                  <button onClick={() => setQuestionOpen(true)} className="cta-banner-btn cta-banner-btn-secondary">Задать вопрос</button>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* PROCESS SECTION */}
       <section id="process" className="section bg-graphite">
         <CherryBranch style={{ position: 'absolute', left: '2%', top: '8%', width: '160px' }} flip light />
@@ -789,6 +770,25 @@ export default function VikitayWebsite() {
                   <p className="process-text">{s.text}</p>
                 </div>
               ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CTA BANNER */}
+      <section className="section bg-graphite">
+        <div className="section-inner">
+          <Reveal>
+            <div className="cta-banner">
+              <img src="/images/founder-svetlana.png" alt="Светлана Аксинас" className="cta-banner-img" />
+              <div className="cta-banner-content">
+                <h2 className="cta-banner-title">Давайте<br/>знакомиться!</h2>
+                <p className="cta-banner-text">Проконсультируем, ответим на вопросы, поможем начать бизнес с Китаем.</p>
+                <div className="cta-banner-btns">
+                  <button onClick={() => setCallbackOpen(true)} className="cta-banner-btn cta-banner-btn-primary">Обратный звонок ↗</button>
+                  <button onClick={() => setQuestionOpen(true)} className="cta-banner-btn cta-banner-btn-secondary">Задать вопрос</button>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>
