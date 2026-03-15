@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import OrbitImages from './OrbitImages';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import FactoryBlock from './FactoryBlock';
 import { factoriesData } from './factoriesData';
 
@@ -239,13 +238,48 @@ export default function VikitayWebsite() {
     }
   ];
 
+  const navigate = useNavigate();
   const cases = [
-    { id: 1, image: '/images/case-broshi.jpg', link: '/cases/broshi' },
-    { id: 2, image: '/images/case-zhemchug.jpg', link: '/cases/zhemchug' },
-    { id: 3, image: '/images/case-klassika.jpg', link: '/cases/klassika' },
-    { id: 4, image: '/images/case-stil.jpg', link: '/cases/stil' },
-    { id: 5, image: '/images/case-retail.jpg', link: '/cases/retail' }
+    { id: 1, image: '/images/case-broshi.jpg', link: '/cases/broshi', title: 'Броши Tiger & Pearl Adorn', desc: 'Элегантные броши ручной работы — жемчуг и авторский дизайн.' },
+    { id: 2, image: '/images/case-zhemchug.jpg', link: '/cases/zhemchug', title: 'Born of the Sea — The Poetry of Pearl', desc: 'Коллекция украшений из натурального жемчуга.' },
+    { id: 3, image: '/images/case-klassika.jpg', link: '/cases/klassika', title: 'Buckle Suede / Ремни & Замша', desc: 'Ремни и аксессуары из натуральной замши.' },
+    { id: 4, image: '/images/case-stil.jpg', link: '/cases/stil', title: 'Furry Chic — Коллекция уютных сумок', desc: 'Меховые сумки для стильного образа.' },
+    { id: 5, image: '/images/case-retail.jpg', link: '/cases/retail', title: 'Elevate Collection — Ритейл кейс', desc: 'Комплексный запуск розничной коллекции.' },
   ];
+
+  // Cases carousel state
+  const casesScrollRef = useRef(null);
+  const [casesDrag, setCasesDrag] = useState({ active: false, startX: 0, scrollStart: 0, moved: false });
+
+  const casesScroll = useCallback((dir) => {
+    const el = casesScrollRef.current;
+    if (!el) return;
+    const card = el.querySelector('[data-case-card]');
+    if (card) el.scrollBy({ left: dir * (card.offsetWidth + 24), behavior: 'smooth' });
+  }, []);
+
+  const onCasesDragStart = useCallback((e) => {
+    const el = casesScrollRef.current;
+    if (!el) return;
+    const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+    setCasesDrag({ active: true, startX: clientX, scrollStart: el.scrollLeft, moved: false });
+  }, []);
+
+  const onCasesDragMove = useCallback((e) => {
+    setCasesDrag(prev => {
+      if (!prev.active) return prev;
+      const el = casesScrollRef.current;
+      if (!el) return prev;
+      const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+      const diff = clientX - prev.startX;
+      el.scrollLeft = prev.scrollStart - diff;
+      return { ...prev, moved: Math.abs(diff) > 5 };
+    });
+  }, []);
+
+  const onCasesDragEnd = useCallback(() => {
+    setCasesDrag(prev => ({ ...prev, active: false }));
+  }, []);
 
   return (
     <div className="vikitay">
@@ -380,7 +414,6 @@ export default function VikitayWebsite() {
         /* Cases Section */
         .cases-intro { text-align: center; max-width: 800px; margin: 0 auto 50px; }
         .cases-intro p { font-size: 16px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.5); margin-bottom: 16px; }
-        .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .case-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(139, 92, 246, 0.08); border-radius: 16px; padding: 40px; text-align: center; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .case-title { font-size: 20px; font-weight: 500; color: rgba(255, 255, 255, 0.4); margin-bottom: 8px; }
         .case-desc { font-size: 14px; font-weight: 400; color: rgba(255, 255, 255, 0.3); }
@@ -424,7 +457,6 @@ export default function VikitayWebsite() {
           .mobile-menu-btn { display: block; }
           .founders-grid { grid-template-columns: 1fr; max-width: 450px; margin-left: auto; margin-right: auto; }
           .services-grid { grid-template-columns: repeat(2, 1fr); }
-          .cases-grid { grid-template-columns: 1fr; }
           .bloggers-card { grid-template-columns: 1fr; padding: 44px; }
           .footer-inner { grid-template-columns: 1fr; gap: 36px; }
           .why-us-header { grid-template-columns: 1fr; gap: 24px; }
@@ -768,23 +800,69 @@ export default function VikitayWebsite() {
               <p>Смотрите наши решения и примеряйте на свой бизнес: что из этого может сработать у вас уже сейчас?</p>
             </div>
           </Reveal>
-          <div style={{ height: '600px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '110px', transform: 'translateX(90px)' }}>
-            <OrbitImages
-              images={cases.map(c => c.image)}
-              shape="ellipse"
-              radiusX={450}
-              radiusY={150}
-              rotation={-5}
-              duration={55}
-              itemSize={160}
-              responsive={true}
-              direction="normal"
-              fill
-              paused={false}
-              onImageClick={(index) => window.location.href = cases[index].link}
-            />
-          </div>
-          
+          <Reveal delay={0.3}>
+            <div style={{ position: 'relative' }}>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginBottom: 20 }}>
+                <button onClick={() => casesScroll(-1)} aria-label="Назад" style={{
+                  width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(167,139,250,0.3)',
+                  background: 'rgba(139,92,246,0.15)', color: '#c4b5fd', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20,
+                  transition: 'all 0.3s ease', fontFamily: "'Jost', sans-serif",
+                }}>&#8592;</button>
+                <button onClick={() => casesScroll(1)} aria-label="Вперёд" style={{
+                  width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(167,139,250,0.3)',
+                  background: 'rgba(139,92,246,0.15)', color: '#c4b5fd', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20,
+                  transition: 'all 0.3s ease', fontFamily: "'Jost', sans-serif",
+                }}>&#8594;</button>
+              </div>
+              <style>{`.cases-scroll::-webkit-scrollbar{display:none}`}</style>
+              <div
+                ref={casesScrollRef}
+                className="cases-scroll"
+                onMouseDown={onCasesDragStart}
+                onMouseMove={onCasesDragMove}
+                onMouseUp={onCasesDragEnd}
+                onMouseLeave={onCasesDragEnd}
+                onTouchStart={onCasesDragStart}
+                onTouchMove={onCasesDragMove}
+                onTouchEnd={onCasesDragEnd}
+                style={{
+                  display: 'flex', gap: 24, overflowX: 'auto', scrollSnapType: 'x mandatory',
+                  scrollBehavior: casesDrag.active ? 'auto' : 'smooth',
+                  WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none', padding: '8px 0',
+                  cursor: casesDrag.active ? 'grabbing' : 'grab', userSelect: 'none',
+                }}
+              >
+                {cases.map((c, i) => (
+                  <div
+                    key={c.id}
+                    data-case-card
+                    onClick={() => { if (!casesDrag.moved) navigate(c.link); }}
+                    style={{
+                      flex: '0 0 calc(33.333% - 16px)', minWidth: 280, scrollSnapAlign: 'start',
+                      borderRadius: 16, overflow: 'hidden', cursor: 'pointer',
+                      background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(139,92,246,0.1)',
+                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                    }}
+                    onMouseEnter={e => { if (!casesDrag.active) { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.25)'; e.currentTarget.style.boxShadow = '0 25px 50px -15px rgba(0,0,0,0.3)'; }}}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.1)'; e.currentTarget.style.boxShadow = 'none'; }}
+                  >
+                    <div style={{ aspectRatio: '4 / 3', overflow: 'hidden' }}>
+                      <img src={c.image} alt={c.title} draggable={false} loading="lazy" style={{
+                        width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+                        transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)', pointerEvents: 'none',
+                      }} />
+                    </div>
+                    <div style={{ padding: '20px 24px' }}>
+                      <h3 style={{ fontSize: 17, fontWeight: 500, marginBottom: 8, lineHeight: 1.3, color: '#fff' }}>{c.title}</h3>
+                      <p style={{ fontSize: 14, fontWeight: 300, lineHeight: 1.6, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{c.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
