@@ -894,11 +894,11 @@ export default function VikitayWebsite() {
       </section>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="cta-section bg-purple">
+      <section id="contact" className="cta-section" style={{ background: 'none', backdropFilter: 'none', WebkitBackdropFilter: 'none' }}>
         <CherryBranch style={{ position: 'absolute', right: '5%', top: '10%', width: '180px' }} />
         <CherryBranch style={{ position: 'absolute', left: '3%', bottom: '15%', width: '150px' }} flip />
         <FloatingOrb size={400} x={50} y={40} delay={0} duration={28} color="rgba(196, 181, 253, 0.08)" />
-        <div className="section-inner">
+        <div style={{ background: 'rgba(0, 0, 0, 0.35)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '24px', padding: '60px 80px', maxWidth: '720px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
           <Reveal><h2 className="section-title">Хотите бизнес с Китаем,<br /><span>который не стыдно показывать?</span></h2></Reveal>
           <Reveal delay={0.1}><p className="section-desc">Оставьте заявку — обсудим ваш проект и найдём лучшее решение.</p></Reveal>
           <Reveal delay={0.2}>
@@ -968,7 +968,7 @@ export default function VikitayWebsite() {
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                 />
               </div>
-              
+
               <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', marginTop: '4px' }}>
                 <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} required style={{ marginTop: '2px', accentColor: '#7c3aed', width: '16px', height: '16px', flexShrink: 0 }} />
                 <span style={{ fontSize: '13px', color: 'rgba(196, 181, 253, 0.7)', lineHeight: '1.4' }}>
