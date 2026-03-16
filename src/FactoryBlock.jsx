@@ -129,8 +129,7 @@ export default function FactoryBlock({
   const scroll = (dir) => {
     const el = scrollRef.current;
     if (!el) return;
-    const itemWidth = el.querySelector('[data-product-item]')?.offsetWidth || 300;
-    el.scrollBy({ left: dir * itemWidth, behavior: 'smooth' });
+    el.scrollBy({ left: dir * 272, behavior: 'smooth' }); // 260 card + 12 gap
   };
 
   return (
@@ -154,7 +153,7 @@ export default function FactoryBlock({
           }
         }
         .factory-block-carousel-item {
-          flex: 0 0 220px;
+          flex: 0 0 260px;
           scroll-snap-align: start;
           min-width: 0;
         }
@@ -386,11 +385,10 @@ export default function FactoryBlock({
                       className="factory-block-carousel-item"
                     >
                       <div style={{
-                        width: 220,
-                        height: 280,
+                        width: 260,
+                        height: 260,
                         borderRadius: 16,
                         overflow: 'hidden',
-                        background: 'rgba(255,255,255,0.03)',
                         border: '1px solid rgba(139,92,246,0.1)',
                         transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                       }}
@@ -412,7 +410,8 @@ export default function FactoryBlock({
                           style={{
                             width: '100%',
                             height: '100%',
-                            objectFit: 'contain',
+                            objectFit: 'cover',
+                            objectPosition: 'center',
                             display: 'block',
                           }}
                         />
