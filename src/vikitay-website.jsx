@@ -324,8 +324,8 @@ export default function VikitayWebsite() {
         .vikitay { font-family: 'Jost', sans-serif; font-weight: 300; background: transparent; color: #fff; overflow-x: hidden; min-height: 100vh; position: relative; z-index: 1; }
         @keyframes floatOrb { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(30px, -30px) scale(1.1); } 50% { transform: translate(-20px, 20px) scale(0.9); } 75% { transform: translate(20px, 30px) scale(1.05); } }
 
-        .bg-graphite { position: relative; background: linear-gradient(180deg, rgba(10, 10, 12, 0.75) 0%, rgba(18, 18, 21, 0.75) 50%, rgba(10, 10, 12, 0.75) 100%); }
-        .bg-purple { position: relative; background: linear-gradient(180deg, rgba(26, 10, 46, 0.75) 0%, rgba(45, 20, 82, 0.75) 20%, rgba(61, 26, 109, 0.75) 50%, rgba(45, 20, 82, 0.75) 80%, rgba(26, 10, 46, 0.75) 100%); box-shadow: inset 0 50px 100px -50px rgba(139, 92, 246, 0.15), inset 0 -50px 100px -50px rgba(139, 92, 246, 0.1); }
+        .bg-graphite { position: relative; background: linear-gradient(180deg, rgba(10, 10, 12, 0.55) 0%, rgba(18, 18, 21, 0.55) 50%, rgba(10, 10, 12, 0.55) 100%); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+        .bg-purple { position: relative; background: linear-gradient(180deg, rgba(26, 10, 46, 0.55) 0%, rgba(45, 20, 82, 0.55) 20%, rgba(61, 26, 109, 0.55) 50%, rgba(45, 20, 82, 0.55) 80%, rgba(26, 10, 46, 0.55) 100%); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: inset 0 50px 100px -50px rgba(139, 92, 246, 0.15), inset 0 -50px 100px -50px rgba(139, 92, 246, 0.1); }
 
         .mouse-glow { position: fixed; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%); pointer-events: none; z-index: 1; transition: left 0.3s ease-out, top 0.3s ease-out; transform: translate(-50%, -50%); }
 
@@ -354,7 +354,7 @@ export default function VikitayWebsite() {
         .nav-phone-number { font-size: 14px; font-weight: 500; color: #fff; letter-spacing: 0.5px; }
         .nav-phone-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #7c3aed, #9333ea); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
 
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 48px; position: relative; overflow: hidden; margin: 0 40px 20px; border-radius: 24px; background: rgba(13, 13, 15, 0.4); }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 48px; position: relative; overflow: hidden; margin: 0 40px 20px; border-radius: 24px; background: rgba(13, 13, 15, 0.4); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
         .hero-content { position: relative; z-index: 2; max-width: 850px; }
         .hero-label { font-size: 12px; font-weight: 400; letter-spacing: 5px; text-transform: uppercase; color: #a78bfa; margin-bottom: 32px; }
         .hero-title { font-size: clamp(36px, 5vw, 58px); font-weight: 700; line-height: 1.15; margin-bottom: 28px; letter-spacing: -1.5px; color: #fff; }
@@ -465,7 +465,7 @@ export default function VikitayWebsite() {
         .form-submit { width: 100%; padding: 16px; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; border-radius: 10px; color: #fff; font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.4s; margin-top: 8px; }
         .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -8px rgba(139, 92, 246, 0.5); }
 
-        .footer { padding: 80px 48px; border-top: 1px solid rgba(139, 92, 246, 0.08); margin: 0 40px 40px; border-radius: 24px; overflow: hidden; }
+        .footer { padding: 80px 48px; border-top: 1px solid rgba(139, 92, 246, 0.08); margin: 0 40px 40px; border-radius: 24px; overflow: hidden; background: linear-gradient(180deg, rgba(10, 10, 12, 0.85) 0%, rgba(18, 18, 21, 0.85) 50%, rgba(10, 10, 12, 0.85) 100%); backdrop-filter: none; -webkit-backdrop-filter: none; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; position: relative; z-index: 2; }
         .footer-about p { font-size: 14px; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.4); margin-top: 20px; max-width: 300px; letter-spacing: 0.2px; }
         .footer-title { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #a78bfa; margin-bottom: 24px; }
