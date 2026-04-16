@@ -1,3 +1,9 @@
+## Team Brain
+Read before starting any session:
+1. C:\Users\fedor\Documents\Fedor's Brain\00 - Team Brain\AGENTS.md
+2. C:\Users\fedor\Documents\Fedor's Brain\00 - Team Brain\Off-Repo Truth Handoff.md
+Then follow the shared workflow defined in AGENTS.md.
+
 ## Brain
 Vault: C:\Users\fedor\Documents\Fedor's Brain\
 Before starting any task: run /brain
