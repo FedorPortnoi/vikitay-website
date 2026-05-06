@@ -1,21 +1,16 @@
-## Team Brain
-Read before starting any session:
-1. C:\Users\fedor\Documents\Fedor's Brain\00 - Team Brain\AGENTS.md
-2. C:\Users\fedor\Documents\Fedor's Brain\00 - Team Brain\Off-Repo Truth Handoff.md
-Then follow the shared workflow defined in AGENTS.md.
-
 ## Brain
-Vault: C:\Users\fedor\Documents\Fedor's Brain\
-Before starting any task: run /brain
-After any significant change: run /log
-Never ask what we're working on — read the vault first
-Never load all notes — only load what is relevant
+Vault: C:\Users\fedor\Obsidian\Brain\
+Read before starting any session: Projects/VIKITAY/vikitay.md
+After any significant change: update Projects/VIKITAY/vikitay-dev-log.md
 
-## Vault Location
-03 - VIKITAY/VIKITAY HQ.md               ← start here always
-03 - VIKITAY/Dev Logs/                    ← most recent = last session context
-03 - VIKITAY/Roadmap/Active TODOs.md      ← what needs doing
-03 - VIKITAY/Architecture/                ← pull only what's relevant
+## Vault Files
+Projects/VIKITAY/vikitay.md                ← start here always
+Projects/VIKITAY/vikitay-dev-log.md        ← most recent = last session context
+Projects/VIKITAY/vikitay-known-issues.md   ← active bugs and blockers
+Projects/VIKITAY/vikitay-react-components.md ← all React components documented
+Projects/VIKITAY/vikitay-dev-setup.md      ← dev commands and deploy
+Projects/VIKITAY/vikitay-russian-copy.md   ← all Russian service copy and text
+Projects/VIKITAY/vikitay-deployment.md     ← deploy history and ISPmanager process
 
 ## Key Commands
 npm run dev       ← localhost:5173
